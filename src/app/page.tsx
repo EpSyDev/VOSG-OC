@@ -79,7 +79,7 @@ export default function Home() {
             </div>
 
             <h1 className="text-6xl md:text-[100px] font-[950] leading-[0.85] mb-12 tracking-[-0.05em] uppercase italic">
-              La force des <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#f1c40f] to-[#fff3ad]">Origines.</span>
+              La force des origines, <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#f1c40f] to-[#fff3ad]">l'énergie d'ici.</span>
             </h1>
 
             <p className="text-zinc-200 text-xl md:text-2xl max-w-3xl mx-auto mb-16 leading-relaxed font-semibold px-4 drop-shadow-md">
