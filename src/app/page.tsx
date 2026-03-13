@@ -66,7 +66,7 @@ export default function Home() {
             </div>
 
             <h1 className="text-6xl md:text-[100px] font-[950] leading-[0.85] mb-12 tracking-[-0.05em] uppercase italic">
-              La force des <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#f1c40f] to-[#fff3ad]">Origines.</span>
+              La force des orignes, <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#f1c40f] to-[#fff3ad]">l'énergie d'ici.</span>
             </h1>
 
             <div className="flex flex-col sm:flex-row gap-6 justify-center items-center">
