@@ -83,7 +83,7 @@ export default function Home() {
             </h1>
 
             <p className="text-zinc-200 text-xl md:text-2xl max-w-3xl mx-auto mb-16 leading-relaxed font-semibold px-4 drop-shadow-md">
-              L'expertise vosgienne rencontre la réactivité occitane pour vos projets d'électricité et climatisation.
+              L'expertise vosgienne rencontre la convivialité occitane pour vos projets d'électricité et climatisation.
             </p>
 
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 max-w-5xl mx-auto">
