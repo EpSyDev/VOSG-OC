@@ -110,7 +110,7 @@ export default function Home() {
                   {/* Premier bloc : Texte Gauche / Image Droite (Vosges, droite) */}
                   <div className="flex flex-col lg:flex-row items-center gap-12 lg:gap-24">
                     <div className="lg:w-1/2 space-y-6">
-                      <h2 className="text-5xl font-black uppercase italic text-[#f1c40f] leading-none">Des cimes <br/> Vosgiennes...</h2>
+                      <h2 className="text-5xl font-black uppercase italic text-green-500 leading-none">Des cimes <br/> Vosgiennes...</h2>
                       <p className="text-xl text-zinc-300 leading-relaxed font-medium">
                         C'est au cœur de cette nature puissante, de ces montagnes de sapins et de ces vallées silencieuses que tout a commencé. La rigueur du climat vosgien nous a appris une chose essentielle : la fiabilité d'une installation électrique n'est pas une option, c'est une nécessité vitale.
                       </p>
@@ -129,7 +129,7 @@ export default function Home() {
                   {/* Deuxième bloc : Image Gauche (Occitanie, Décalée) / Texte Droite */}
                   <div className="flex flex-col lg:flex-row-reverse items-center gap-12 lg:gap-24 mt-16 relative">
                     <div className="lg:w-1/2 space-y-6 lg:pl-12">
-                      <h2 className="text-5xl font-black uppercase italic text-green-500 leading-none lg:text-left">...Au soleil de <br/> l'Occitanie</h2>
+                      <h2 className="text-5xl font-black uppercase italic text-[#f1c40f] leading-none lg:text-left">...Au soleil de <br/> l'Occitanie</h2>
                       <p className="text-xl text-zinc-300 leading-relaxed font-medium lg:text-left">
                         Aujourd'hui, c'est sous cette lumière dorée, face au Pont du Gard, symbole d'une ingénierie qui défie le temps, que VOSG'OC ELEC déploie son savoir-faire. Nous marions cette exigence montagnarde à la réactivité locale pour offrir des solutions de climatisation et d'énergie durable adaptées à notre région d'adoption.
                       </p>
