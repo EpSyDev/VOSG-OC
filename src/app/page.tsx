@@ -97,49 +97,51 @@ export default function Home() {
 
         {/* CONTENU DYNAMIQUE */}
         <div id="dynamic-content" className={`transition-all duration-700 ease-in-out px-6 ${activeSection ? 'opacity-100 max-h-[4000px] py-10' : 'opacity-0 max-h-0 overflow-hidden'}`}>
-          <div className="max-w-6xl mx-auto bg-white/5 border border-white/10 rounded-[50px] p-8 md:p-16 backdrop-blur-3xl shadow-2xl relative">
-            <button onClick={() => setActiveSection(null)} className="absolute top-8 right-8 text-zinc-500 hover:text-white transition-colors">
+          <div className="max-w-6xl mx-auto bg-white/5 border border-white/10 rounded-[50px] p-8 md:p-16 backdrop-blur-3xl shadow-2xl relative overflow-hidden">
+            <button onClick={() => setActiveSection(null)} className="absolute top-8 right-8 text-zinc-500 hover:text-white transition-colors z-20">
               <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
             </button>
 
-            {/* SECTION HISTOIRE : STRUCTURE DÉSTRUCTURÉE */}
+            {/* SECTION HISTOIRE : STRUCTURE DÉSTRUCTURÉE INTÉGRÉE (LES VRAIES PHOTOS) */}
             {activeSection === 'histoire' && (
-              <div className="animate-in fade-in slide-in-from-bottom-6 duration-700">
-                <div className="flex flex-col gap-16">
+              <div className="animate-in fade-in slide-in-from-bottom-6 duration-700 relative z-10">
+                <div className="flex flex-col gap-24">
                   
-                  {/* Premier bloc : Texte Gauche / Image Droite */}
+                  {/* Premier bloc : Texte Gauche / Image Droite (Vosges, droite) */}
                   <div className="flex flex-col lg:flex-row items-center gap-12 lg:gap-24">
                     <div className="lg:w-1/2 space-y-6">
                       <h2 className="text-5xl font-black uppercase italic text-[#f1c40f] leading-none">Des cimes <br/> Vosgiennes...</h2>
                       <p className="text-xl text-zinc-300 leading-relaxed font-medium">
-                        C'est au cœur des montagnes que tout a commencé. La rigueur du climat vosgien nous a appris une chose essentielle : la fiabilité d'une installation électrique n'est pas une option, c'est une nécessité vitale.
+                        C'est au cœur de cette nature puissante, de ces montagnes de sapins et de ces vallées silencieuses que tout a commencé. La rigueur du climat vosgien nous a appris une chose essentielle : la fiabilité d'une installation électrique n'est pas une option, c'est une nécessité vitale.
                       </p>
                     </div>
-                    <div className="lg:w-1/2 relative">
-                      <div className="absolute -inset-4 bg-green-500/10 blur-3xl rounded-full"></div>
+                    <div className="lg:w-1/2 relative group">
+                      <div className="absolute -inset-4 bg-green-500/10 blur-3xl rounded-full group-hover:bg-green-500/20 transition-all"></div>
                       <Image 
-                        src="https://images.unsplash.com/photo-1518156677180-95a2893f3e9f?q=80&w=1000&auto=format&fit=crop" 
-                        alt="Vosges" 
+                        src="/vosges.png" 
+                        alt="Cœur des Vosges - VOSG'OC ELEC" 
                         width={600} height={400} 
-                        className="relative rounded-[40px] border border-white/10 shadow-2xl rotate-2 hover:rotate-0 transition-transform duration-500 object-cover aspect-[4/3]"
+                        className="relative rounded-[40px] border border-white/10 shadow-2xl object-cover aspect-[4/3] group-hover:scale-105 transition-transform duration-500"
                       />
                     </div>
                   </div>
 
-                  {/* Deuxième bloc : Image Gauche / Texte Droite (Décalé) */}
-                  <div className="flex flex-col lg:flex-row-reverse items-center gap-12 lg:gap-24 mt-12">
-                    <div className="lg:w-1/2 space-y-6">
-                      <h2 className="text-5xl font-black uppercase italic text-green-500 leading-none text-right lg:text-left">...Au soleil de <br/> l'Occitanie</h2>
-                      <p className="text-xl text-zinc-300 leading-relaxed font-medium text-right lg:text-left">
-                        Aujourd'hui, c'est sous le ciel d'Occitanie que VOSG'OC ELEC déploie son savoir-faire. Nous marions cette exigence montagnarde à la réactivité locale pour offrir des solutions de climatisation et d'énergie solaire adaptées à notre région.
+                  {/* Deuxième bloc : Image Gauche (Occitanie, Décalée) / Texte Droite */}
+                  <div className="flex flex-col lg:flex-row-reverse items-center gap-12 lg:gap-24 mt-16 relative">
+                    <div className="lg:w-1/2 space-y-6 lg:pl-12">
+                      <h2 className="text-5xl font-black uppercase italic text-green-500 leading-none lg:text-left">...Au soleil de <br/> l'Occitanie</h2>
+                      <p className="text-xl text-zinc-300 leading-relaxed font-medium lg:text-left">
+                        Aujourd'hui, c'est sous cette lumière dorée, face au Pont du Gard, symbole d'une ingénierie qui défie le temps, que VOSG'OC ELEC déploie son savoir-faire. Nous marions cette exigence montagnarde à la réactivité locale pour offrir des solutions de climatisation et d'énergie durable adaptées à notre région d'adoption.
                       </p>
                     </div>
-                    <div className="lg:w-1/2 relative lg:-mt-24">
+                    {/* DA : On utilise une marge négative pour faire "chevaucher" visuellement les deux blocs */}
+                    <div className="lg:w-1/2 relative lg:-mt-32 group">
+                      <div className="absolute -inset-4 bg-yellow-500/10 blur-3xl rounded-full group-hover:bg-yellow-500/20 transition-all"></div>
                        <Image 
-                        src="https://images.unsplash.com/photo-1510798831971-661eb04b3739?q=80&w=1000&auto=format&fit=crop" 
-                        alt="Occitanie" 
-                        width={500} height={700} 
-                        className="relative rounded-[60px] border border-white/10 shadow-2xl -rotate-3 hover:rotate-0 transition-transform duration-500 object-cover aspect-[2/3]"
+                        src="/occitanie.png" 
+                        alt="Pont du Gard Occitanie - VOSG'OC ELEC" 
+                        width={600} height={400} 
+                        className="relative rounded-[50px] border border-white/10 shadow-2xl object-cover aspect-[4/3] group-hover:scale-105 transition-transform duration-500"
                       />
                     </div>
                   </div>
@@ -149,7 +151,7 @@ export default function Home() {
 
             {/* SECTION QUALIFICATIONS */}
             {activeSection === 'quals' && (
-              <div className="animate-in fade-in duration-500">
+              <div className="animate-in fade-in duration-500 relative z-10">
                 <h2 className="text-4xl font-black uppercase italic mb-10 text-green-500">Qualifications & Agréments</h2>
                 <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
                   {['Qualifelec', 'IRVE', 'Habilitation', 'RGE QualiPAC'].map((q) => (
@@ -163,7 +165,7 @@ export default function Home() {
 
             {/* SECTION CONTACT */}
             {activeSection === 'contact' && (
-              <div className="animate-in zoom-in-95 duration-500">
+              <div className="animate-in zoom-in-95 duration-500 relative z-10">
                 <h2 className="text-4xl font-black uppercase italic mb-8 text-white">Contact & Devis</h2>
                 <form className="space-y-6" onSubmit={(e) => e.preventDefault()}>
                   <div className="grid md:grid-cols-2 gap-6">
@@ -190,7 +192,7 @@ export default function Home() {
             )}
 
             {activeSection === 'projets' && (
-              <div className="animate-in fade-in duration-500">
+              <div className="animate-in fade-in duration-500 relative z-10">
                 <h2 className="text-4xl font-black uppercase italic mb-8 text-white">Nos Réalisations</h2>
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                    <GalleryItem category="Électricité" />
