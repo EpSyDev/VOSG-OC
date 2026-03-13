@@ -65,7 +65,8 @@ export default function Home() {
 
             {/* LES 4 ONGLETS (GRILLE) */}
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 max-w-5xl mx-auto">
-              <button onClick={() => toggleSection('histoire')} className={`py-6 px-4 rounded-2xl font-black uppercase text-[11px] tracking-widest transition-all border ${activeSection === 'histoire' ? 'bg-[#f1c40f] text-black border-[#f1c40f]' : 'bg-black/40 border-white/10 text-white hover:bg-white/5'}`}>
+              <button onClick={() => toggleSection('histoire')} className={`w-full sm:w-auto font-black py-6 px-16 rounded-[24px] shadow-xl uppercase text-xs tracking-widest transition-all duration-300 ${activeSection === 'contact' ? 'bg-green-500 text-white' : 'bg-[#f1c40f] text-black'}`}
+              >
                 Notre Histoire
               </button>
               <button onClick={() => toggleSection('quals')} className={`py-6 px-4 rounded-2xl font-black uppercase text-[11px] tracking-widest transition-all border ${activeSection === 'quals' ? 'bg-[#f1c40f] text-black border-[#f1c40f]' : 'bg-black/40 border-white/10 text-white hover:bg-white/5'}`}>
