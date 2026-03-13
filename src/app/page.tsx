@@ -3,9 +3,9 @@
 import { useState } from 'react';
 import Image from 'next/image';
 
-// --- COMPOSANT SERVICE CARD ---
+// --- COMPOSANT : CARTE DE SERVICE ---
 const ServiceCard = ({ icon, title, description, color, onClick }: { icon: string, title: string, description: string, color: 'green' | 'yellow', onClick?: () => void }) => (
-  <button onClick={onClick} className="w-full text-left relative group p-10 rounded-[40px] bg-black/40 border border-white/5 hover:border-white/20 transition-all duration-500 backdrop-blur-xl overflow-hidden focus:outline-none">
+  <button onClick={onClick} className="w-full text-left relative group p-10 rounded-[40px] bg-black/40 border border-white/5 hover:border-white/20 transition-all duration-500 backdrop-blur-xl overflow-hidden focus:outline-none focus:ring-2 focus:ring-green-500/50">
     <div className={`absolute -right-10 -top-10 w-40 h-40 blur-[80px] opacity-0 group-hover:opacity-20 transition-opacity duration-500 ${color === 'green' ? 'bg-green-600' : 'bg-yellow-500'}`}></div>
     <div className="relative z-10">
       <div className="text-5xl mb-6 group-hover:scale-110 transition-transform duration-500">{icon}</div>
@@ -16,27 +16,38 @@ const ServiceCard = ({ icon, title, description, color, onClick }: { icon: strin
   </button>
 );
 
+// --- COMPOSANT : BOUTON DE NAVIGATION HERO ---
+// C'est ici l'efficience : un seul endroit pour gérer le style de nos 4 boutons
+const NavButton = ({ label, isActive, onClick }: { label: string, isActive: boolean, onClick: () => void }) => (
+  <button 
+    onClick={onClick} 
+    className={`font-black py-5 px-6 rounded-2xl transition-all duration-300 uppercase text-[10px] tracking-widest border-2 shadow-lg
+      ${isActive 
+        ? 'bg-green-500 border-green-500 text-white shadow-green-500/20 scale-105' 
+        : 'bg-transparent border-[#f1c40f] text-[#f1c40f] hover:bg-[#f1c40f]/10'}`}
+  >
+    {label}
+  </button>
+);
+
 export default function Home() {
   const [activeSection, setActiveSection] = useState<string | null>(null);
 
-  const toggleSection = (section: string) => {
-    setActiveSection(activeSection === section ? null : section);
-  };
+  const toggleSection = (id: string) => setActiveSection(activeSection === id ? null : id);
 
   return (
-    <main className="relative min-h-screen bg-black text-white font-sans selection:bg-yellow-500/30">
+    <main className="relative min-h-screen bg-black text-white font-sans selection:bg-yellow-500/30 overflow-x-hidden">
       
-      {/* FOND FIXE */}
-      <div className="fixed inset-0 z-0">
+      {/* BACKGROUND FIXE */}
+      <div className="fixed inset-0 z-0 pointer-events-none">
         <Image src="/hero-bg.png" alt="Background" fill className="object-cover opacity-60" priority />
         <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-transparent to-black"></div>
       </div>
 
-      {/* NAVBAR ÉPURÉE (Mode Luxe) */}
+      {/* NAVBAR */}
       <nav className="fixed w-full z-[100] bg-black/40 backdrop-blur-2xl border-b border-white/5 px-10 py-6">
         <div className="max-w-[1800px] mx-auto flex justify-between items-center">
           <Image src="/text-logo.png" alt="VOSG'OC" width={280} height={80} className="h-10 md:h-12 w-auto object-contain" />
-          
           <button 
             onClick={() => toggleSection('contact')} 
             className={`px-8 py-3 rounded-2xl transition-all uppercase text-[10px] font-black tracking-widest shadow-lg ${activeSection === 'contact' ? 'bg-green-600 shadow-green-600/20' : 'bg-blue-600 shadow-blue-600/20 hover:bg-blue-500'}`}
@@ -54,7 +65,7 @@ export default function Home() {
               <Image src="/blason.png" alt="Blason" width={300} height={300} className="h-48 md:h-60 w-auto object-contain mix-blend-lighten" />
             </div>
 
-            <h1 className="text-6xl md:text-[100px] font-[950] leading-[0.85] mb-12 tracking-[-0.05em] uppercase italic text-white">
+            <h1 className="text-6xl md:text-[100px] font-[950] leading-[0.85] mb-12 tracking-[-0.05em] uppercase italic">
               La force des <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#f1c40f] to-[#fff3ad]">Origines.</span>
             </h1>
 
@@ -62,90 +73,82 @@ export default function Home() {
               L'expertise vosgienne rencontre la réactivité occitane pour vos projets d'électricité et climatisation.
             </p>
 
-            {/* LES 4 ONGLETS REGROUPÉS (CHARTE JAUNE/VERT) */}
+            {/* NAVIGATION CENTRALE REFACTORISÉE (LOGIQUE PRO) */}
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 max-w-5xl mx-auto">
-              <button 
-                onClick={() => toggleSection('histoire')} 
-                className={`font-black py-5 px-6 rounded-2xl transition-all uppercase text-[10px] tracking-widest border-2 ${activeSection === 'histoire' ? 'bg-green-500 border-green-500 text-white' : 'bg-transparent border-[#f1c40f] text-[#f1c40f] hover:bg-[#f1c40f]/10'}`}
-              >
-                Notre Histoire
-              </button>
-              
-              <button 
-                onClick={() => toggleSection('quals')} 
-                className={`font-black py-5 px-6 rounded-2xl transition-all uppercase text-[10px] tracking-widest border-2 ${activeSection === 'quals' ? 'bg-green-500 border-green-500 text-white' : 'bg-transparent border-[#f1c40f] text-[#f1c40f] hover:bg-[#f1c40f]/10'}`}
-              >
-                Qualifications
-              </button>
-
-              <button 
-                onClick={() => toggleSection('projets')} 
-                className={`font-black py-5 px-6 rounded-2xl transition-all uppercase text-[10px] tracking-widest border-2 ${activeSection === 'projets' ? 'bg-green-500 border-green-500 text-white' : 'bg-transparent border-[#f1c40f] text-[#f1c40f] hover:bg-[#f1c40f]/10'}`}
-              >
-                Réalisations
-              </button>
-
-              <button 
-                onClick={() => toggleSection('contact')} 
-                className={`font-black py-5 px-6 rounded-2xl transition-all uppercase text-[10px] tracking-widest border-2 ${activeSection === 'contact' ? 'bg-green-500 border-green-500 text-white' : 'bg-transparent border-[#f1c40f] text-[#f1c40f] hover:bg-[#f1c40f]/10'}`}
-              >
-                Devis Gratuit
-              </button>
+              <NavButton label="Notre Histoire" isActive={activeSection === 'histoire'} onClick={() => toggleSection('histoire')} />
+              <NavButton label="Qualifications" isActive={activeSection === 'quals'} onClick={() => toggleSection('quals')} />
+              <NavButton label="Réalisations" isActive={activeSection === 'projets'} onClick={() => toggleSection('projets')} />
+              <NavButton label="Devis Gratuit" isActive={activeSection === 'contact'} onClick={() => toggleSection('contact')} />
             </div>
           </div>
         </section>
 
-        {/* ZONE DE CONTENU DYNAMIQUE */}
-        <div id="dynamic-content" className={`transition-all duration-700 ease-in-out px-6 ${activeSection ? 'opacity-100 max-h-[2000px] py-10' : 'opacity-0 max-h-0 overflow-hidden'}`}>
+        {/* CONTENU DYNAMIQUE (LA MAGIE) */}
+        <div className={`transition-all duration-700 ease-in-out px-6 ${activeSection ? 'opacity-100 max-h-[2000px] py-10' : 'opacity-0 max-h-0 overflow-hidden'}`}>
           <div className="max-w-4xl mx-auto bg-white/5 border border-white/10 rounded-[50px] p-12 backdrop-blur-3xl shadow-2xl relative">
-            <button onClick={() => setActiveSection(null)} className="absolute top-8 right-8 text-zinc-500 hover:text-white text-2xl">✕</button>
+            <button onClick={() => setActiveSection(null)} className="absolute top-8 right-8 text-zinc-500 hover:text-white transition-colors">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+            </button>
 
+            {/* CONTENU : HISTOIRE */}
             {activeSection === 'histoire' && (
               <div className="animate-in fade-in slide-in-from-bottom-4 duration-500">
                 <h2 className="text-4xl font-black uppercase italic mb-8 text-[#f1c40f]">Notre Histoire</h2>
-                <p className="text-xl text-zinc-300 leading-relaxed italic">Texte en cours de rédaction...</p>
+                <div className="space-y-4 text-xl text-zinc-300 leading-relaxed italic border-l-4 border-[#f1c40f] pl-6">
+                  <p>En attente du texte client...</p>
+                </div>
               </div>
             )}
 
+            {/* CONTENU : QUALIFICATIONS */}
             {activeSection === 'quals' && (
               <div className="animate-in fade-in duration-500">
                 <h2 className="text-4xl font-black uppercase italic mb-10 text-green-500">Qualifications</h2>
-                <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
+                <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
                   {['Qualifelec', 'IRVE', 'Habilitation', 'RGE QualiPAC'].map((q) => (
-                    <div key={q} className="p-6 bg-white/5 rounded-3xl border border-white/5 font-bold uppercase tracking-widest text-[10px] text-center text-[#f1c40f]">{q}</div>
+                    <div key={q} className="p-6 bg-white/5 rounded-3xl border border-white/5 font-bold uppercase tracking-widest text-[10px] text-center text-[#f1c40f] hover:bg-[#f1c40f]/5 transition-colors cursor-default">
+                      {q}
+                    </div>
                   ))}
                 </div>
               </div>
             )}
 
+            {/* CONTENU : CONTACT */}
             {activeSection === 'contact' && (
               <div className="animate-in zoom-in-95 duration-500">
                 <h2 className="text-4xl font-black uppercase italic mb-8 text-white">Contact & Devis</h2>
-                <form className="space-y-6">
+                <form className="space-y-6" onSubmit={(e) => e.preventDefault()}>
                   <div className="grid md:grid-cols-2 gap-6">
-                    <input type="text" placeholder="Nom Complet" className="w-full bg-white/5 border border-white/10 rounded-2xl p-4 focus:border-green-500 outline-none transition" />
-                    <input type="email" placeholder="Email" className="w-full bg-white/5 border border-white/10 rounded-2xl p-4 focus:border-green-500 outline-none transition" />
+                    <input type="text" placeholder="Nom Complet" className="w-full bg-white/5 border border-white/10 rounded-2xl p-5 focus:border-green-500 outline-none transition-all placeholder:text-zinc-600" />
+                    <input type="email" placeholder="Email" className="w-full bg-white/5 border border-white/10 rounded-2xl p-5 focus:border-green-500 outline-none transition-all placeholder:text-zinc-600" />
                   </div>
-                  <select className="w-full bg-white/10 border border-white/10 rounded-2xl p-4 focus:border-green-500 outline-none transition text-zinc-400">
-                    <option value="" disabled selected>Objet de la demande</option>
-                    <option value="info">Demande d'informations</option>
-                    <option value="rdv">Prise de Rendez-vous</option>
-                    <option value="devis">Demande de devis gratuit</option>
-                  </select>
-                  <textarea placeholder="Votre projet..." rows={4} className="w-full bg-white/5 border border-white/10 rounded-2xl p-4 focus:border-green-500 outline-none transition"></textarea>
-                  <button className="w-full bg-green-500 text-white font-black py-5 rounded-2xl uppercase tracking-[0.2em] hover:bg-green-400 transition-all">
-                    Envoyer la demande
+                  <div className="relative">
+                    <select className="w-full bg-white/10 border border-white/10 rounded-2xl p-5 focus:border-green-500 outline-none transition-all text-zinc-400 appearance-none cursor-pointer">
+                      <option value="" disabled selected>Objet de la demande</option>
+                      <option value="info">Demande d'informations</option>
+                      <option value="rdv">Prise de Rendez-vous</option>
+                      <option value="devis">Demande de devis gratuit</option>
+                    </select>
+                    <div className="absolute right-5 top-1/2 -translate-y-1/2 pointer-events-none text-zinc-500">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="m6 9 6 6 6-6"/></svg>
+                    </div>
+                  </div>
+                  <textarea placeholder="Décrivez votre besoin..." rows={4} className="w-full bg-white/5 border border-white/10 rounded-2xl p-5 focus:border-green-500 outline-none transition-all placeholder:text-zinc-600"></textarea>
+                  <button className="w-full bg-green-500 text-white font-black py-6 rounded-2xl uppercase tracking-[0.3em] hover:bg-green-400 transition-all shadow-xl shadow-green-500/20 active:scale-[0.98]">
+                    Envoyer le message
                   </button>
                 </form>
               </div>
             )}
 
+            {/* CONTENU : RÉALISATIONS */}
             {activeSection === 'projets' && (
-              <div className="text-center">
-                <h2 className="text-4xl font-black uppercase italic mb-8 text-left text-white">Nos Réalisations</h2>
-                <div className="grid grid-cols-2 gap-4">
-                   <div className="aspect-video bg-white/5 rounded-3xl flex items-center justify-center border border-white/5 italic text-zinc-600">Prochainement...</div>
-                   <div className="aspect-video bg-white/5 rounded-3xl flex items-center justify-center border border-white/5 italic text-zinc-600">Prochainement...</div>
+              <div className="animate-in fade-in duration-500">
+                <h2 className="text-4xl font-black uppercase italic mb-8 text-white text-left">Nos Réalisations</h2>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                   <div className="aspect-video bg-white/5 rounded-[30px] flex items-center justify-center border border-white/5 italic text-zinc-600 group hover:border-white/20 transition-all">Prochainement...</div>
+                   <div className="aspect-video bg-white/5 rounded-[30px] flex items-center justify-center border border-white/5 italic text-zinc-600 group hover:border-white/20 transition-all">Prochainement...</div>
                 </div>
               </div>
             )}
@@ -160,8 +163,8 @@ export default function Home() {
            </div>
         </section>
 
-        <footer className="py-20 text-center border-t border-white/5 bg-black/80">
-          <p className="text-zinc-500 text-[10px] uppercase tracking-widest font-black">© 2026 VOSG'OC ELEC</p>
+        <footer className="py-20 text-center border-t border-white/5 bg-black/80 backdrop-blur-md">
+          <p className="text-zinc-500 text-[10px] uppercase tracking-[0.5em] font-black">© 2026 VOSG'OC ELEC — L'excellence artisanale</p>
         </footer>
       </div>
     </main>
