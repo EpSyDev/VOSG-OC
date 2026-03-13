@@ -145,7 +145,7 @@ export default function Home() {
         {/* SERVICES */}
         <section id="services" className="py-32 px-10">
            <div className="max-w-7xl mx-auto grid md:grid-cols-2 gap-12">
-              <ServiceCard icon="⚡" title="Électricité" description="Installation, rénovation et mise aux normes." color="green" onClick={() => toggleSection('contact')} />
+              <ServiceCard icon="⚡" title="Électricité" description="Installation, rénovation et mise aux normes." color="blue" onClick={() => toggleSection('contact')} />
               <ServiceCard icon="❄️" title="Climatisation" description="Pompes à chaleur et climatisations réversibles." color="yellow" onClick={() => toggleSection('contact')} />
            </div>
         </section>
