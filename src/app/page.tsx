@@ -23,9 +23,6 @@ export default function Home() {
       setActiveSection(null);
     } else {
       setActiveSection(section);
-      setTimeout(() => {
-        document.getElementById('dynamic-content')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
-      }, 100);
     }
   };
 
