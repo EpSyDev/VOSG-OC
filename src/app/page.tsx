@@ -16,8 +16,23 @@ const ServiceCard = ({ icon, title, description, color, onClick }: { icon: strin
   </button>
 );
 
-// --- COMPOSANT : BOUTON DE NAVIGATION HERO ---
-// C'est ici l'efficience : un seul endroit pour gérer le style de nos 4 boutons
+// --- COMPOSANT : ITEM DE LA GALERIE ---
+const GalleryItem = ({ category }: { category: string }) => (
+  <div className="relative aspect-video rounded-[30px] bg-white/5 border border-white/5 overflow-hidden group cursor-pointer">
+    {/* Placeholder en attendant les vraies images */}
+    <div className="absolute inset-0 flex items-center justify-center italic text-zinc-600 group-hover:scale-110 transition-transform duration-500">
+      Photo {category}...
+    </div>
+    {/* Overlay au survol */}
+    <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-6">
+       <span className="text-[10px] font-black uppercase tracking-widest bg-white/10 backdrop-blur-md px-3 py-1 rounded-full border border-white/10">
+         {category}
+       </span>
+    </div>
+  </div>
+);
+
+// --- COMPOSANT : BOUTON DE NAVIGATION ---
 const NavButton = ({ label, isActive, onClick }: { label: string, isActive: boolean, onClick: () => void }) => (
   <button 
     onClick={onClick} 
@@ -73,7 +88,6 @@ export default function Home() {
               L'expertise vosgienne rencontre la réactivité occitane pour vos projets d'électricité et climatisation.
             </p>
 
-            {/* NAVIGATION CENTRALE REFACTORISÉE (LOGIQUE PRO) */}
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 max-w-5xl mx-auto">
               <NavButton label="Notre Histoire" isActive={activeSection === 'histoire'} onClick={() => toggleSection('histoire')} />
               <NavButton label="Qualifications" isActive={activeSection === 'quals'} onClick={() => toggleSection('quals')} />
@@ -83,14 +97,13 @@ export default function Home() {
           </div>
         </section>
 
-        {/* CONTENU DYNAMIQUE (LA MAGIE) */}
-        <div className={`transition-all duration-700 ease-in-out px-6 ${activeSection ? 'opacity-100 max-h-[2000px] py-10' : 'opacity-0 max-h-0 overflow-hidden'}`}>
-          <div className="max-w-4xl mx-auto bg-white/5 border border-white/10 rounded-[50px] p-12 backdrop-blur-3xl shadow-2xl relative">
+        {/* CONTENU DYNAMIQUE */}
+        <div className={`transition-all duration-700 ease-in-out px-6 ${activeSection ? 'opacity-100 max-h-[3000px] py-10' : 'opacity-0 max-h-0 overflow-hidden'}`}>
+          <div className="max-w-5xl mx-auto bg-white/5 border border-white/10 rounded-[50px] p-8 md:p-16 backdrop-blur-3xl shadow-2xl relative">
             <button onClick={() => setActiveSection(null)} className="absolute top-8 right-8 text-zinc-500 hover:text-white transition-colors">
               <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
             </button>
 
-            {/* CONTENU : HISTOIRE */}
             {activeSection === 'histoire' && (
               <div className="animate-in fade-in slide-in-from-bottom-4 duration-500">
                 <h2 className="text-4xl font-black uppercase italic mb-8 text-[#f1c40f]">Notre Histoire</h2>
@@ -100,7 +113,6 @@ export default function Home() {
               </div>
             )}
 
-            {/* CONTENU : QUALIFICATIONS */}
             {activeSection === 'quals' && (
               <div className="animate-in fade-in duration-500">
                 <h2 className="text-4xl font-black uppercase italic mb-10 text-green-500">Qualifications</h2>
@@ -114,17 +126,16 @@ export default function Home() {
               </div>
             )}
 
-            {/* CONTENU : CONTACT */}
             {activeSection === 'contact' && (
               <div className="animate-in zoom-in-95 duration-500">
                 <h2 className="text-4xl font-black uppercase italic mb-8 text-white">Contact & Devis</h2>
                 <form className="space-y-6" onSubmit={(e) => e.preventDefault()}>
                   <div className="grid md:grid-cols-2 gap-6">
-                    <input type="text" placeholder="Nom Complet" className="w-full bg-white/5 border border-white/10 rounded-2xl p-5 focus:border-green-500 outline-none transition-all placeholder:text-zinc-600" />
-                    <input type="email" placeholder="Email" className="w-full bg-white/5 border border-white/10 rounded-2xl p-5 focus:border-green-500 outline-none transition-all placeholder:text-zinc-600" />
+                    <input type="text" placeholder="Nom Complet" className="w-full bg-white/5 border border-white/10 rounded-2xl p-5 focus:border-green-500 focus:ring-4 focus:ring-green-500/10 outline-none transition-all placeholder:text-zinc-600 hover:bg-white/10" />
+                    <input type="email" placeholder="Email" className="w-full bg-white/5 border border-white/10 rounded-2xl p-5 focus:border-green-500 focus:ring-4 focus:ring-green-500/10 outline-none transition-all placeholder:text-zinc-600 hover:bg-white/10" />
                   </div>
                   <div className="relative">
-                    <select className="w-full bg-white/10 border border-white/10 rounded-2xl p-5 focus:border-green-500 outline-none transition-all text-zinc-400 appearance-none cursor-pointer">
+                    <select className="w-full bg-white/10 border border-white/10 rounded-2xl p-5 focus:border-green-500 focus:ring-4 focus:ring-green-500/10 outline-none transition-all text-zinc-400 appearance-none cursor-pointer">
                       <option value="" disabled selected>Objet de la demande</option>
                       <option value="info">Demande d'informations</option>
                       <option value="rdv">Prise de Rendez-vous</option>
@@ -134,21 +145,24 @@ export default function Home() {
                       <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="m6 9 6 6 6-6"/></svg>
                     </div>
                   </div>
-                  <textarea placeholder="Décrivez votre besoin..." rows={4} className="w-full bg-white/5 border border-white/10 rounded-2xl p-5 focus:border-green-500 outline-none transition-all placeholder:text-zinc-600"></textarea>
-                  <button className="w-full bg-green-500 text-white font-black py-6 rounded-2xl uppercase tracking-[0.3em] hover:bg-green-400 transition-all shadow-xl shadow-green-500/20 active:scale-[0.98]">
+                  <textarea placeholder="Décrivez votre besoin..." rows={4} className="w-full bg-white/5 border border-white/10 rounded-2xl p-5 focus:border-green-500 focus:ring-4 focus:ring-green-500/10 outline-none transition-all placeholder:text-zinc-600 hover:bg-white/10"></textarea>
+                  <button className="w-full bg-green-500 text-white font-black py-6 rounded-2xl uppercase tracking-[0.3em] hover:bg-green-400 hover:shadow-[0_0_30px_rgba(34,197,94,0.3)] transition-all duration-300 active:scale-[0.98]">
                     Envoyer le message
                   </button>
                 </form>
               </div>
             )}
 
-            {/* CONTENU : RÉALISATIONS */}
             {activeSection === 'projets' && (
               <div className="animate-in fade-in duration-500">
-                <h2 className="text-4xl font-black uppercase italic mb-8 text-white text-left">Nos Réalisations</h2>
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                   <div className="aspect-video bg-white/5 rounded-[30px] flex items-center justify-center border border-white/5 italic text-zinc-600 group hover:border-white/20 transition-all">Prochainement...</div>
-                   <div className="aspect-video bg-white/5 rounded-[30px] flex items-center justify-center border border-white/5 italic text-zinc-600 group hover:border-white/20 transition-all">Prochainement...</div>
+                <h2 className="text-4xl font-black uppercase italic mb-8 text-white">Nos Réalisations</h2>
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                   <GalleryItem category="Électricité" />
+                   <GalleryItem category="Climatisation" />
+                   <GalleryItem category="Installation" />
+                   <GalleryItem category="Maintenance" />
+                   <GalleryItem category="Électricité" />
+                   <GalleryItem category="Rénovation" />
                 </div>
               </div>
             )}
