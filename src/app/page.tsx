@@ -78,7 +78,7 @@ export default function Home() {
               <Image src="/blason.png" alt="Blason" width={300} height={300} className="h-48 md:h-60 w-auto object-contain mix-blend-lighten" />
             </div>
 
-            <h1 className="text-6xl md:text-[100px] font-[950] leading-[0.85] mb-12 tracking-[-0.05em] uppercase italic">
+            <h1 className="text-6xl md:text-[100px] font-[950] leading-tight mb-12 tracking-[-0.05em] uppercase italic">
               La force des origines, <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#f1c40f] to-[#fff3ad]">l'énergie d'ici.</span>
             </h1>
 
