@@ -15,6 +15,23 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   title: "VOSG'OC - Électricité & Climatisation",
   description: "L'expertise vosgienne au service de l'Occitanie",
+  // FORÇAGE DU FAVICON ICI
+  icons: {
+    icon: [
+      {
+        url: "/blason.png?v=4", // Le ?v=4 force le rafraîchissement chez Vercel/Chrome
+        href: "/blason.png?v=4",
+      },
+    ],
+    shortcut: ["/blason.png?v=4"],
+    apple: [
+      {
+        url: "/blason.png?v=4",
+        sizes: "180x180",
+        type: "image/png",
+      },
+    ],
+  },
 };
 
 export default function RootLayout({
@@ -23,7 +40,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="fr"> {/* Changé en "fr" pour le SEO local de ton pote ;) */}
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
