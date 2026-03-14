@@ -15,9 +15,6 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   title: "VOSG'OC - Électricité & Climatisation",
   description: "L'expertise vosgienne au service de l'Occitanie",
-  icons: {
-    icon: '/favicon.png',
-  },
 };
 
 export default function RootLayout({
