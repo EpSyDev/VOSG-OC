@@ -226,7 +226,7 @@ export default function Home() {
         <section id="contact" className="py-32 px-10 bg-zinc-900 relative z-10 text-white overflow-hidden border-t border-white/5">
           <div className="absolute -right-20 -top-20 w-96 h-96 bg-green-600/10 blur-[100px] rounded-full"></div>
           <div className="max-w-4xl mx-auto">
-            <h2 className="text-5xl md:text-7xl font-black mb-16 uppercase italic tracking-tighter text-center">Parlons de votre <span className="text-green-500">projet</span></h2>
+            <h2 className="text-5xl md:text-7xl font-black mb-16 uppercase italic tracking-tighter text-center">Parlons de votre <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#f1c40f] to-[#fff3ad]">projet</span></h2>
             <div className="grid md:grid-cols-3 gap-12">
               <div>
                 <p className="text-zinc-500 text-[10px] font-black uppercase tracking-widest mb-2">Téléphone</p>
