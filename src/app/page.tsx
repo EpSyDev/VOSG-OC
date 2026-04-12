@@ -7,11 +7,11 @@ import zoneImg from './zone.png';
 const ServiceCard = ({ icon, title, items, color, technicalNote, onClick }: { icon: string, title: string, items: string[], color: 'green' | 'yellow', technicalNote?: string, onClick?: () => void }) => (
   <div 
     onClick={onClick}
-    className="relative group p-8 md:p-12 rounded-[40px] bg-black/40 border border-white/5 hover:border-white/20 transition-all duration-500 backdrop-blur-xl overflow-hidden flex flex-col h-full cursor-default"
+    className="relative group p-6 md:p-12 rounded-[32px] md:rounded-[40px] bg-black/40 border border-white/5 hover:border-white/20 transition-all duration-500 backdrop-blur-xl overflow-hidden flex flex-col h-full cursor-default"
   >
     <div className={`absolute -right-10 -top-10 w-40 h-40 blur-[80px] opacity-0 group-hover:opacity-20 transition-opacity duration-500 ${color === 'green' ? 'bg-green-600' : 'bg-yellow-500'}`}></div>
     <div className="relative z-10">
-      <div className="text-6xl mb-8 group-hover:scale-110 transition-transform duration-500">{icon}</div>
+      <div className="text-5xl md:text-6xl mb-6 md:mb-8 group-hover:scale-110 transition-transform duration-500">{icon}</div>
       <h3 className="text-3xl font-black mb-4 tracking-tighter text-white uppercase italic">{title}</h3>
       <ul className="space-y-4 mb-8">
         {items.map((item, idx) => (
@@ -21,7 +21,7 @@ const ServiceCard = ({ icon, title, items, color, technicalNote, onClick }: { ic
           </li>
         ))}
       </ul>
-      <div className={`h-1.5 w-16 mb-6 ${color === 'green' ? 'bg-[#f1c40f]' : 'bg-blue-600'} rounded-full`} />
+      <div className={`h-1 w-12 md:h-1.5 md:w-16 mb-6 ${color === 'green' ? 'bg-[#f1c40f]' : 'bg-blue-600'} rounded-full`} />
       {technicalNote && (
         <div className="mt-auto p-4 rounded-2xl bg-white/5 border border-white/10 italic text-[11px] text-zinc-400 leading-snug">
           {technicalNote}
@@ -55,13 +55,13 @@ export default function Home() {
       </div>
 
       {/* NAVBAR */}
-      <nav className="fixed w-full z-[100] bg-black/40 backdrop-blur-2xl border-b border-white/5 px-10 py-6">
+      <nav className="fixed w-full z-[100] bg-black/40 backdrop-blur-2xl border-b border-white/5 px-6 md:px-10 py-4 md:py-6">
         <div className="max-w-[1800px] mx-auto flex justify-between items-center">
           <div className="flex items-center gap-6">
-            <Image src="/text-logo.png" alt="VOSG'OC" width={280} height={80} className="h-10 md:h-12 w-auto object-contain" />
-            <span className="hidden lg:block text-[25px] font-black uppercase tracking-[0.6em] text-[#f1c40f] border-l border-white/10 pl-6">
+            <Image src="/text-logo.png" alt="VOSG'OC" width={280} height={80} className="h-8 md:h-12 w-auto object-contain" />
+            <a href="tel:0607505366" className="hidden lg:block text-[20px] font-black uppercase tracking-[0.4em] text-[#f1c40f] border-l border-white/10 pl-6 hover:text-white transition-colors">
               06 07 50 53 66
-            </span>
+            </a>
           </div>
           <div className="hidden md:flex gap-12 items-center text-[10px] font-black uppercase tracking-[0.4em] text-zinc-100">
             <a href="#histoire" className="hover:text-white transition-colors">Histoire</a>
@@ -76,12 +76,12 @@ export default function Home() {
       <div className="relative z-10">
         {/* HERO SECTION */}
         <section className="relative min-h-screen flex flex-col items-center justify-center px-6">
-          <div className="max-w-7xl mx-auto text-center mt-20">
-            <div className="mb-10 flex justify-center">
-              <Image src="/blason.png" alt="Blason" width={300} height={300} className="h-48 md:h-60 w-auto object-contain mix-blend-lighten" />
+          <div className="max-w-7xl mx-auto text-center py-20 md:py-0">
+            <div className="mb-8 md:mb-10 flex justify-center">
+              <Image src="/blason.png" alt="Blason" width={300} height={300} className="h-32 md:h-60 w-auto object-contain mix-blend-lighten" />
             </div>
 
-            <h1 className="text-6xl md:text-[100px] font-[950] leading-tight mb-12 tracking-[-0.05em] uppercase italic">
+            <h1 className="text-4xl md:text-6xl lg:text-[100px] font-[950] leading-[1.1] mb-8 md:mb-12 tracking-[-0.02em] md:tracking-[-0.05em] uppercase italic">
               La force des origines, <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#f1c40f] to-[#fff3ad]">l'énergie d'ici.</span>
             </h1>
 
@@ -90,10 +90,10 @@ export default function Home() {
             </p>
 
             <div className="flex flex-col sm:flex-row gap-6 justify-center items-center">
-              <a href="#contact" className="w-full sm:w-auto bg-zinc-100 hover:bg-white text-black font-black py-6 px-12 rounded-2xl transition-all shadow-[0_0_30px_rgba(255,255,255,0.1)] hover:shadow-[0_0_40px_rgba(255,255,255,0.2)] uppercase tracking-widest text-xs">
+              <a href="#contact" className="w-full sm:w-auto bg-zinc-100 hover:bg-white text-black font-black py-5 md:py-6 px-10 md:px-12 rounded-2xl transition-all shadow-[0_0_30px_rgba(255,255,255,0.1)] hover:shadow-[0_0_40px_rgba(255,255,255,0.2)] uppercase tracking-widest text-xs">
                 Demander un devis
               </a>
-              <a href="#services" className="w-full sm:w-auto border-2 border-[#f1c40f] text-[#f1c40f] hover:bg-[#f1c40f]/10 font-black py-6 px-12 rounded-2xl transition-all uppercase tracking-widest text-xs">
+              <a href="#services" className="w-full sm:w-auto border-2 border-[#f1c40f] text-[#f1c40f] hover:bg-[#f1c40f]/10 font-black py-5 md:py-6 px-10 md:px-12 rounded-2xl transition-all uppercase tracking-widest text-xs">
                 Nos Services
               </a>
             </div>
@@ -101,9 +101,9 @@ export default function Home() {
         </section>
 
         {/* BARRE DE CONFIANCE (QUALIFICATIONS) - Directement après le Hero */}
-        <section className="py-10 border-y border-white/5 bg-white/5 backdrop-blur-sm">
-          <div className="max-w-[1400px] mx-auto px-10">
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
+        <section className="py-8 md:py-10 border-y border-white/5 bg-white/5 backdrop-blur-sm">
+          <div className="max-w-[1400px] mx-auto px-6 md:px-10">
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-y-8 gap-x-4">
               {[
                 { title: 'Expertise Électrique', certif: 'Qualifelec' },
                 { title: 'Garantie Clim', certif: 'ADC Fluides' },
@@ -111,7 +111,7 @@ export default function Home() {
                 { title: 'Installation aux normes', certif: 'NF C 15-100' }
               ].map((q) => (
                 <div key={q.title} className="text-center group">
-                  <div className="text-[#f1c40f] font-black text-lg md:text-xl uppercase italic tracking-tighter mb-1 group-hover:scale-105 transition-transform">{q.title}</div>
+                  <div className="text-[#f1c40f] font-black text-base md:text-xl uppercase italic tracking-tighter mb-1 group-hover:scale-105 transition-transform">{q.title}</div>
                   <div className="text-zinc-400 text-[11px] md:text-xs uppercase font-bold tracking-[0.2em]">{q.certif}</div>
                 </div>
               ))}
@@ -120,17 +120,17 @@ export default function Home() {
         </section>
 
         {/* SECTION HISTOIRE : L'ADN DE LA MARQUE - PLUS SERRÉ */}
-        <section id="histoire" className="py-20 px-10 bg-zinc-900/30">
-          <div className="max-w-[1400px] mx-auto flex flex-col gap-20">
-            <div className="flex flex-col lg:flex-row items-center gap-12">
+        <section id="histoire" className="py-16 md:py-20 px-6 md:px-10 bg-zinc-900/30">
+          <div className="max-w-[1400px] mx-auto flex flex-col gap-16 md:gap-20">
+            <div className="flex flex-col lg:flex-row items-center gap-8 md:gap-12">
               <div className="lg:w-1/2 space-y-4">
-                <h2 className="text-4xl md:text-5xl font-black uppercase italic text-green-500 leading-none tracking-tighter">Des cimes <br/> Vosgiennes...</h2>
-                <p className="text-lg text-zinc-300 leading-relaxed font-medium">
+                <h2 className="text-3xl md:text-5xl font-black uppercase italic text-green-500 leading-none tracking-tighter">Des cimes <br/> Vosgiennes...</h2>
+                <p className="text-base md:text-lg text-zinc-300 leading-relaxed font-medium">
                   C'est au cœur de cette nature puissante que tout a commencé. La rigueur du climat vosgien nous a appris que la fiabilité d'une installation électrique n'est pas une option, c'est une nécessité vitale.
                 </p>
               </div>
-              <div className="lg:w-1/3 relative group overflow-hidden rounded-[30px] ml-auto">
-                <Image src="/vosges.png" alt="Vosges" width={500} height={350} className="w-full object-cover aspect-video group-hover:scale-110 transition-transform duration-700" />
+              <div className="w-full lg:w-1/3 relative group overflow-hidden rounded-[24px] md:rounded-[30px] lg:ml-auto">
+                <Image src="/vosges.png" alt="Vosges" width={500} height={350} className="w-full h-auto object-cover aspect-video group-hover:scale-110 transition-transform duration-700" />
               </div>
             </div>
 
@@ -141,15 +141,15 @@ export default function Home() {
                   Nous marions cette exigence montagnarde à la convivialité locale pour offrir des solutions de climatisation adaptées au Gard et à l'Hérault. Un savoir-faire qui défie le temps.
                 </p>
               </div>
-              <div className="lg:w-1/3 relative group overflow-hidden rounded-[30px] mr-auto">
-                <Image src="/occitanie.png" alt="Occitanie" width={500} height={350} className="w-full object-cover aspect-video group-hover:scale-110 transition-transform duration-700" />
+              <div className="w-full lg:w-1/3 relative group overflow-hidden rounded-[24px] md:rounded-[30px] lg:mr-auto">
+                <Image src="/occitanie.png" alt="Occitanie" width={500} height={350} className="w-full h-auto object-cover aspect-video group-hover:scale-110 transition-transform duration-700" />
               </div>
             </div>
           </div>
         </section>
 
         {/* SERVICES */}
-        <section id="services" className="py-24 px-10">
+        <section id="services" className="py-16 md:py-24 px-6 md:px-10">
           <div className="max-w-[1400px] mx-auto">
             <div className="flex flex-col mb-20">
               <h2 className="text-4xl md:text-7xl font-black uppercase italic tracking-tighter mb-4">Mes <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#f1c40f] to-[#fff3ad]">Expertises</span></h2>
@@ -185,14 +185,14 @@ export default function Home() {
         </section>
 
         {/* ZONE D'INTERVENTION */}
-        <section id="zone" className="py-24 px-10 relative overflow-hidden z-10">
+        <section id="zone" className="py-16 md:py-24 px-6 md:px-10 relative overflow-hidden z-10">
           <div className="max-w-[1400px] mx-auto relative z-10">
             <div className="grid lg:grid-cols-2 gap-16 items-center">
               <div>
-                <h2 className="text-5xl font-black mb-8 uppercase italic tracking-tighter">
+                <h2 className="text-4xl md:text-5xl font-black mb-6 md:mb-8 uppercase italic tracking-tighter">
                   Zone <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#f1c40f] to-[#fff3ad]">d'intervention</span>
                 </h2>
-                <p className="text-zinc-300 text-lg font-medium leading-relaxed">
+                <p className="text-zinc-300 text-base md:text-lg font-medium leading-relaxed mb-8 lg:mb-0">
                   Basé à Congénies, j'interviens rapidement sur un large secteur couvrant le Gard, l'Hérault et le Vaucluse.
                 </p>
               </div>
@@ -208,10 +208,10 @@ export default function Home() {
         </section>
 
         {/* RÉALISATIONS - PLACÉES AVANT LE CONTACT */}
-        <section id="projets" className="py-24 px-10">
+        <section id="projets" className="py-16 md:py-24 px-6 md:px-10">
           <div className="max-w-[1400px] mx-auto">
-            <h2 className="text-4xl font-black uppercase italic mb-16">Nos <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#f1c40f] to-[#fff3ad]">dernières réalisations</span></h2>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <h2 className="text-3xl md:text-4xl font-black uppercase italic mb-12 md:mb-16">Nos <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#f1c40f] to-[#fff3ad]">dernières réalisations</span></h2>
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
               <GalleryItem category="Électricité" />
               <GalleryItem category="Climatisation" />
               <GalleryItem category="Installation" />
@@ -223,10 +223,10 @@ export default function Home() {
         </section>
 
         {/* CONTACT */}
-        <section id="contact" className="py-32 px-10 bg-zinc-900 relative z-10 text-white overflow-hidden border-t border-white/5">
+        <section id="contact" className="py-20 md:py-32 px-6 md:px-10 bg-zinc-900 relative z-10 text-white overflow-hidden border-t border-white/5">
           <div className="absolute -right-20 -top-20 w-96 h-96 bg-green-600/10 blur-[100px] rounded-full"></div>
           <div className="max-w-4xl mx-auto">
-            <h2 className="text-5xl md:text-7xl font-black mb-16 uppercase italic tracking-tighter text-center">Parlons de votre <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#f1c40f] to-[#fff3ad]">projet</span></h2>
+            <h2 className="text-4xl md:text-7xl font-black mb-12 md:mb-16 uppercase italic tracking-tighter text-center">Parlons de votre <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#f1c40f] to-[#fff3ad]">projet</span></h2>
             <div className="grid md:grid-cols-3 gap-12">
               <div>
                 <p className="text-zinc-500 text-[10px] font-black uppercase tracking-widest mb-2">Téléphone</p>
