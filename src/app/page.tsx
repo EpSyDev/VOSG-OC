@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import Image from 'next/image';
+import zoneImg from './zone.png';
 
 const ServiceCard = ({ icon, title, items, color, technicalNote, onClick }: { icon: string, title: string, items: string[], color: 'green' | 'yellow', technicalNote?: string, onClick?: () => void }) => (
   <div 
@@ -191,23 +192,14 @@ export default function Home() {
                 <h2 className="text-5xl font-black mb-8 uppercase italic tracking-tighter">
                   Zone <span className="text-[#f1c40f]">d'intervention</span>
                 </h2>
-                <p className="text-zinc-300 text-lg mb-12 font-medium leading-relaxed">
+                <p className="text-zinc-300 text-lg font-medium leading-relaxed">
                   Basé à Congénies, j'interviens sous 24h/48h sur un large secteur couvrant le Gard, l'Hérault et le Vaucluse.
                 </p>
-                <div className="flex flex-wrap gap-4 text-[10px] font-black uppercase tracking-widest text-white">
-                  {['Congénies', 'Bagnols-sur-Cèze', 'Montpellier', 'Alès', 'Avignon'].map((city) => (
-                    <span key={city} className="px-6 py-3 bg-white/5 border border-white/10 rounded-xl backdrop-blur-sm">
-                      {city}
-                    </span>
-                  ))}
-                </div>
               </div>
               <div className="relative group overflow-hidden rounded-[40px] border border-white/10 shadow-2xl">
                 <Image 
-                  src="/zone.png" 
+                  src={zoneImg} 
                   alt="Zone d'intervention VOSG'OC ELEC" 
-                  width={800} 
-                  height={600} 
                   className="w-full h-auto object-cover group-hover:scale-105 transition-transform duration-700" 
                 />
               </div>
