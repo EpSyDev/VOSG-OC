@@ -1,13 +1,25 @@
 import Image from 'next/image';
 
-const ServiceCard = ({ icon, title, description, color }: { icon: string, title: string, description: string, color: string }) => (
-  <div className="relative group p-12 rounded-[40px] bg-black/40 border border-white/5 hover:border-white/20 transition-all duration-500 backdrop-blur-xl overflow-hidden">
+const ServiceCard = ({ icon, title, items, color, technicalNote }: { icon: string, title: string, items: string[], color: string, technicalNote?: string }) => (
+  <div className="relative group p-8 md:p-12 rounded-[40px] bg-black/40 border border-white/5 hover:border-white/20 transition-all duration-500 backdrop-blur-xl overflow-hidden flex flex-col h-full">
     <div className={`absolute -right-10 -top-10 w-40 h-40 blur-[80px] opacity-0 group-hover:opacity-20 transition-opacity duration-500 ${color === 'blue' ? 'bg-blue-600' : 'bg-yellow-500'}`}></div>
     <div className="relative z-10">
       <div className="text-6xl mb-8 group-hover:scale-110 transition-transform duration-500">{icon}</div>
       <h3 className="text-3xl font-black mb-4 tracking-tighter text-white uppercase italic">{title}</h3>
-      <p className="text-zinc-300 leading-relaxed text-lg font-medium">{description}</p>
-      <div className={`mt-8 h-1.5 w-16 ${color === 'blue' ? 'bg-blue-600' : 'bg-[#f1c40f]'} rounded-full`}></div>
+      <ul className="space-y-4 mb-8">
+        {items.map((item, idx) => (
+          <li key={idx} className="text-zinc-300 flex items-start gap-3 leading-tight">
+            <span className={`mt-1.5 h-1.5 w-1.5 rounded-full shrink-0 ${color === 'blue' ? 'bg-blue-500' : 'bg-yellow-500'}`} />
+            <span className="font-medium">{item}</span>
+          </li>
+        ))}
+      </ul>
+      {technicalNote && (
+        <div className="mt-auto p-4 rounded-2xl bg-white/5 border border-white/10 italic text-sm text-zinc-400">
+          {technicalNote}
+        </div>
+      )}
+      <div className={`mt-8 h-1.5 w-16 ${color === 'blue' ? 'bg-blue-600' : 'bg-[#f1c40f]'} rounded-full`} />
     </div>
   </div>
 );
@@ -38,11 +50,12 @@ export default function Home() {
               L'énergie d'ici
             </span>
           </div>
-          <div className="hidden md:flex gap-12 items-center text-[10px] font-black uppercase tracking-[0.4em] text-zinc-400">
+          <div className="hidden md:flex gap-12 items-center text-[10px] font-black uppercase tracking-[0.4em] text-zinc-100">
             <a href="#services" className="hover:text-white transition-colors">Services</a>
-            <button className="bg-blue-600 hover:bg-blue-500 text-white px-10 py-4 rounded-2xl transition-all shadow-lg shadow-blue-600/20 uppercase">
+            <a href="#zone" className="hover:text-white transition-colors">Secteur</a>
+            <a href="#contact" className="bg-blue-600 hover:bg-blue-500 text-white px-10 py-4 rounded-2xl transition-all shadow-lg shadow-blue-600/20 uppercase">
               Contact
-            </button>
+            </a>
           </div>
         </div>
       </nav>
@@ -102,21 +115,72 @@ export default function Home() {
            <div className="max-w-[1400px] mx-auto grid md:grid-cols-2 gap-12">
               <ServiceCard 
                 icon="⚡"
-                title="Électricité"
-                description="Solutions complètes en neuf et rénovation. Mise en conformité NFC 15-100 et dépannage."
+                title="Électricité Générale & Industrielle"
+                items={[
+                  "Rénovation : Remise aux normes et modernisation (Matériel Legrand)",
+                  "Neuf : Étude et réalisation selon la norme NF C 15-100",
+                  "Industriel : Installations et maintenance avec Schneider Electric",
+                  "Dépannage Urgent : Intervention prioritaire panne totale ou partielle"
+                ]}
                 color="blue"
               />
               <ServiceCard 
                 icon="❄️"
-                title="Climatisation"
-                description="Installation de pompes à chaleur et climatisations réversibles haute performance."
+                title="Génie Climatique & Clim"
+                items={[
+                  "Expertise en confort thermique et économies d'énergie",
+                  "Pose de systèmes mono-split et multi-split",
+                  "Partenaire Mitsubishi Electric, Toshiba, LG...",
+                  "Maintenance & Entretien : Nettoyage et optimisation",
+                  "Dépannage : Intervention rapide toutes pannes"
+                ]}
+                technicalNote="Détenteur de l’Attestation de Capacité (ADC) pour la manipulation des fluides frigorigènes."
                 color="yellow"
               />
            </div>
         </section>
 
-        {/* PIED DE PAGE SIMPLE POUR FINIR PRO */}
-        <footer className="py-20 text-center border-t border-white/5 bg-black/80 backdrop-blur-md">
+        {/* ZONE D'INTERVENTION */}
+        <section id="zone" className="py-32 px-10 relative overflow-hidden">
+          <div className="max-w-4xl mx-auto text-center relative z-10">
+            <h2 className="text-4xl md:text-6xl font-black mb-8 uppercase italic tracking-tighter">
+              Secteur <span className="text-[#f1c40f]">d'intervention</span>
+            </h2>
+            <p className="text-zinc-300 text-lg mb-12 font-medium">
+              Basé à Congénies, j'interviens sur un large secteur couvrant le Gard, l'Hérault et le Vaucluse.
+            </p>
+            <div className="flex flex-wrap justify-center gap-4 text-sm font-black uppercase tracking-widest text-white">
+              {['Congénies', 'Bagnols-sur-Cèze', 'Montpellier', 'Alès', 'Avignon'].map((city) => (
+                <span key={city} className="px-6 py-3 bg-white/5 border border-white/10 rounded-xl backdrop-blur-sm">
+                  {city}
+                </span>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* CONTACT */}
+        <section id="contact" className="py-32 px-10 bg-zinc-900/50 backdrop-blur-md border-t border-white/5 text-center">
+          <div className="max-w-4xl mx-auto">
+            <h2 className="text-4xl font-black mb-16 uppercase italic">Contactez <span className="text-blue-500">Vosg'OC Elec</span></h2>
+            <div className="grid md:grid-cols-3 gap-12">
+              <div>
+                <p className="text-zinc-500 text-[10px] font-black uppercase tracking-widest mb-2">Téléphone</p>
+                <a href="tel:0607505366" className="text-2xl font-black hover:text-[#f1c40f] transition-colors italic">06 07 50 53 66</a>
+              </div>
+              <div>
+                <p className="text-zinc-500 text-[10px] font-black uppercase tracking-widest mb-2">E-mail</p>
+                <a href="mailto:vosgocelec@outlook.com" className="text-xl font-black hover:text-[#f1c40f] transition-colors break-all italic">vosgocelec@outlook.com</a>
+              </div>
+              <div>
+                <p className="text-zinc-500 text-[10px] font-black uppercase tracking-widest mb-2">Siège Social</p>
+                <p className="text-xl font-black italic">Congénies (30111)</p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <footer className="py-10 text-center border-t border-white/5 bg-black">
           <Image src="/text-logo.png" alt="VOSG'OC" width={150} height={50} className="mx-auto opacity-50 mb-6" />
           <p className="text-zinc-500 text-[10px] uppercase tracking-widest font-bold">
             © 2026 VOSG'OC ELEC — Tous droits réservés
