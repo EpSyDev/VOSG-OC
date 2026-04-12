@@ -63,9 +63,10 @@ export default function Home() {
             </span>
           </div>
           <div className="hidden md:flex gap-12 items-center text-[10px] font-black uppercase tracking-[0.4em] text-zinc-100">
-            <a href="#services" className="hover:text-white transition-colors">Services</a>
             <a href="#histoire" className="hover:text-white transition-colors">Histoire</a>
+            <a href="#services" className="hover:text-white transition-colors">Services</a>
             <a href="#zone" className="hover:text-white transition-colors">Secteur</a>
+            <a href="#projets" className="hover:text-white transition-colors">Réalisations</a>
             <a href="#contact" className="bg-green-600 hover:bg-green-500 text-white px-10 py-4 rounded-2xl transition-all shadow-lg shadow-green-600/20 uppercase">Contact</a>
           </div>
         </div>
@@ -117,8 +118,37 @@ export default function Home() {
           </div>
         </section>
 
+        {/* SECTION HISTOIRE : L'ADN DE LA MARQUE - PLUS SERRÉ */}
+        <section id="histoire" className="py-20 px-10 bg-zinc-900/30">
+          <div className="max-w-[1400px] mx-auto flex flex-col gap-20">
+            <div className="flex flex-col lg:flex-row items-center gap-12">
+              <div className="lg:w-1/2 space-y-4">
+                <h2 className="text-4xl md:text-5xl font-black uppercase italic text-green-500 leading-none tracking-tighter">Des cimes <br/> Vosgiennes...</h2>
+                <p className="text-lg text-zinc-300 leading-relaxed font-medium">
+                  C'est au cœur de cette nature puissante que tout a commencé. La rigueur du climat vosgien nous a appris que la fiabilité d'une installation électrique n'est pas une option, c'est une nécessité vitale.
+                </p>
+              </div>
+              <div className="lg:w-1/3 relative group overflow-hidden rounded-[30px] ml-auto">
+                <Image src="/vosges.png" alt="Vosges" width={500} height={350} className="w-full object-cover aspect-video group-hover:scale-110 transition-transform duration-700" />
+              </div>
+            </div>
+
+            <div className="flex flex-col lg:flex-row-reverse items-center gap-12">
+              <div className="lg:w-1/2 space-y-4">
+                <h2 className="text-4xl md:text-5xl font-black uppercase italic text-[#f1c40f] leading-none tracking-tighter">...Au soleil de <br/> l'Occitanie</h2>
+                <p className="text-lg text-zinc-300 leading-relaxed font-medium">
+                  Nous marions cette exigence montagnarde à la réactivité locale pour offrir des solutions de climatisation adaptées au Gard et à l'Hérault. Un savoir-faire qui défie le temps.
+                </p>
+              </div>
+              <div className="lg:w-1/3 relative group overflow-hidden rounded-[30px] mr-auto">
+                <Image src="/occitanie.png" alt="Occitanie" width={500} height={350} className="w-full object-cover aspect-video group-hover:scale-110 transition-transform duration-700" />
+              </div>
+            </div>
+          </div>
+        </section>
+
         {/* SERVICES */}
-        <section id="services" className="py-32 px-10">
+        <section id="services" className="py-24 px-10">
           <div className="max-w-[1400px] mx-auto">
             <div className="flex flex-col mb-20">
               <h2 className="text-5xl md:text-7xl font-black uppercase italic tracking-tighter mb-4">Mes <span className="text-green-500">Expertises</span></h2>
@@ -153,52 +183,8 @@ export default function Home() {
           </div>
         </section>
 
-        {/* SECTION HISTOIRE : L'ADN DE LA MARQUE */}
-        <section id="histoire" className="py-32 px-10 bg-zinc-900/30">
-          <div className="max-w-[1400px] mx-auto flex flex-col gap-32">
-            <div className="flex flex-col lg:flex-row items-center gap-12 lg:gap-24">
-              <div className="lg:w-1/2 space-y-6">
-                <h2 className="text-5xl font-black uppercase italic text-green-500 leading-none tracking-tighter">Des cimes <br/> Vosgiennes...</h2>
-                <p className="text-xl text-zinc-300 leading-relaxed font-medium">
-                  C'est au cœur de cette nature puissante que tout a commencé. La rigueur du climat vosgien nous a appris que la fiabilité d'une installation électrique n'est pas une option, c'est une nécessité vitale.
-                </p>
-              </div>
-              <div className="lg:w-1/2 relative group overflow-hidden rounded-[40px]">
-                <Image src="/vosges.png" alt="Vosges" width={600} height={400} className="w-full object-cover aspect-[4/3] group-hover:scale-110 transition-transform duration-700" />
-              </div>
-            </div>
-
-            <div className="flex flex-col lg:flex-row-reverse items-center gap-12 lg:gap-24">
-              <div className="lg:w-1/2 space-y-6">
-                <h2 className="text-5xl font-black uppercase italic text-[#f1c40f] leading-none tracking-tighter">...Au soleil de <br/> l'Occitanie</h2>
-                <p className="text-xl text-zinc-300 leading-relaxed font-medium">
-                  Nous marions cette exigence montagnarde à la réactivité locale pour offrir des solutions de climatisation adaptées au Gard et à l'Hérault. Un savoir-faire qui défie le temps.
-                </p>
-              </div>
-              <div className="lg:w-1/2 relative group overflow-hidden rounded-[40px]">
-                <Image src="/occitanie.png" alt="Occitanie" width={600} height={400} className="w-full object-cover aspect-[4/3] group-hover:scale-110 transition-transform duration-700" />
-              </div>
-            </div>
-          </div>
-        </section>
-
-        {/* RÉALISATIONS */}
-        <section id="projets" className="py-32 px-10">
-          <div className="max-w-[1400px] mx-auto">
-            <h2 className="text-4xl font-black uppercase italic mb-16">Nos dernières <span className="text-[#f1c40f]">réalisations</span></h2>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-              <GalleryItem category="Électricité" />
-              <GalleryItem category="Climatisation" />
-              <GalleryItem category="Installation" />
-              <GalleryItem category="Maintenance" />
-              <GalleryItem category="Tertiaire" />
-              <GalleryItem category="Rénovation" />
-            </div>
-          </div>
-        </section>
-
         {/* ZONE D'INTERVENTION */}
-        <section id="zone" className="py-32 px-10 relative overflow-hidden z-10">
+        <section id="zone" className="py-24 px-10 relative overflow-hidden z-10">
           <div className="max-w-[1400px] mx-auto relative z-10">
             <div className="grid lg:grid-cols-2 gap-16 items-center">
               <div>
@@ -219,6 +205,21 @@ export default function Home() {
               <div className="bg-white/5 border border-white/10 rounded-[40px] aspect-square flex items-center justify-center italic text-zinc-600 uppercase font-black tracking-widest">
                 Carte Interactive à venir
               </div>
+            </div>
+          </div>
+        </section>
+
+        {/* RÉALISATIONS - PLACÉES AVANT LE CONTACT */}
+        <section id="projets" className="py-24 px-10">
+          <div className="max-w-[1400px] mx-auto">
+            <h2 className="text-4xl font-black uppercase italic mb-16">Nos dernières <span className="text-[#f1c40f]">réalisations</span></h2>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+              <GalleryItem category="Électricité" />
+              <GalleryItem category="Climatisation" />
+              <GalleryItem category="Installation" />
+              <GalleryItem category="Maintenance" />
+              <GalleryItem category="Tertiaire" />
+              <GalleryItem category="Rénovation" />
             </div>
           </div>
         </section>
