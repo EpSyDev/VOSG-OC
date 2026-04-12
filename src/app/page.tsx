@@ -45,6 +45,8 @@ const GalleryItem = ({ category }: { category: string }) => (
 );
 
 export default function Home() {
+  const [isMapOpen, setIsMapOpen] = useState(false);
+
   return (
     <main className="relative min-h-screen bg-black text-white font-sans selection:bg-yellow-500/30 overflow-x-hidden">
       
@@ -152,7 +154,7 @@ export default function Home() {
         <section id="services" className="py-16 md:py-24 px-6 md:px-10">
           <div className="max-w-[1400px] mx-auto">
             <div className="flex flex-col mb-20">
-              <h2 className="text-4xl md:text-7xl font-black uppercase italic tracking-tighter mb-4">Mes <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#f1c40f] to-[#fff3ad]">Expertises</span></h2>
+              <h2 className="text-4xl md:text-7xl font-black uppercase italic tracking-tighter mb-4">Mes <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#f1c40f] to-[#fff3ad]">EXPERTISES</span></h2>
             </div>
             <div className="grid md:grid-cols-2 gap-12">
               <ServiceCard 
@@ -189,14 +191,17 @@ export default function Home() {
           <div className="max-w-[1400px] mx-auto relative z-10">
             <div className="grid lg:grid-cols-2 gap-16 items-center">
               <div>
-                <h2 className="text-4xl md:text-5xl font-black mb-6 md:mb-8 uppercase italic tracking-tighter">
-                  Zone <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#f1c40f] to-[#fff3ad]">d'intervention</span>
+                <h2 className="text-4xl md:text-7xl font-black mb-6 md:mb-8 uppercase italic tracking-tighter">
+                  Zone <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#f1c40f] to-[#fff3ad]">D'INTERVENTION</span>
                 </h2>
                 <p className="text-zinc-300 text-base md:text-lg font-medium leading-relaxed mb-8 lg:mb-0">
                   Basé à Congénies, j'interviens rapidement sur un large secteur couvrant le Gard, l'Hérault et le Vaucluse.
                 </p>
               </div>
-              <div className="relative group overflow-hidden rounded-[40px] border border-white/10 shadow-2xl">
+              <div 
+                onClick={() => setIsMapOpen(true)}
+                className="relative group overflow-hidden rounded-[40px] border border-white/10 shadow-2xl cursor-zoom-in"
+              >
                 <Image 
                   src={zoneImg} 
                   alt="Zone d'intervention VOSG'OC ELEC" 
@@ -210,7 +215,7 @@ export default function Home() {
         {/* RÉALISATIONS - PLACÉES AVANT LE CONTACT */}
         <section id="projets" className="py-16 md:py-24 px-6 md:px-10">
           <div className="max-w-[1400px] mx-auto">
-            <h2 className="text-3xl md:text-4xl font-black uppercase italic mb-12 md:mb-16">Nos <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#f1c40f] to-[#fff3ad]">dernières réalisations</span></h2>
+            <h2 className="text-4xl md:text-7xl font-black uppercase italic mb-12 md:mb-16">Nos <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#f1c40f] to-[#fff3ad]">DERNIÈRES RÉALISATIONS</span></h2>
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
               <GalleryItem category="Électricité" />
               <GalleryItem category="Climatisation" />
@@ -249,6 +254,26 @@ export default function Home() {
           <p className="text-zinc-500 text-[10px] uppercase tracking-[0.5em] font-black italic">© 2026 VOSG'OC ELEC — L'excellence artisanale</p>
         </footer>
       </div>
+
+      {/* LIGHTBOX POUR LA CARTE */}
+      {isMapOpen && (
+        <div 
+          className="fixed inset-0 z-[200] bg-black/95 backdrop-blur-2xl flex items-center justify-center p-4 md:p-10 cursor-zoom-out"
+          onClick={() => setIsMapOpen(false)}
+        >
+          <div className="relative w-full max-w-6xl aspect-[4/3] md:aspect-video">
+            <Image 
+              src={zoneImg} 
+              alt="Zone d'intervention" 
+              fill
+              className="object-contain"
+            />
+            <button className="absolute top-0 right-0 md:-top-10 md:-right-10 text-white hover:text-[#f1c40f] transition-colors">
+              <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+            </button>
+          </div>
+        </div>
+      )}
     </main>
   );
 }
