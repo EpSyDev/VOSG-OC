@@ -59,7 +59,7 @@ export default function Home() {
         <div className="max-w-[1800px] mx-auto flex justify-between items-center">
           <div className="flex items-center gap-6">
             <Image src="/text-logo.png" alt="VOSG'OC" width={280} height={80} className="h-10 md:h-12 w-auto object-contain" />
-            <span className="hidden lg:block text-[11px] font-black uppercase tracking-[0.6em] text-[#f1c40f] border-l border-white/10 pl-6">
+            <span className="hidden lg:block text-[20px] font-black uppercase tracking-[0.6em] text-[#f1c40f] border-l border-white/10 pl-6">
               06 07 50 53 66
             </span>
           </div>
