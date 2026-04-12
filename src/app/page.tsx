@@ -151,7 +151,7 @@ export default function Home() {
               />
             </div>
           </div>
-        </div>
+        </section>
 
         {/* SECTION HISTOIRE : L'ADN DE LA MARQUE */}
         <section id="histoire" className="py-32 px-10 bg-zinc-900/30">
