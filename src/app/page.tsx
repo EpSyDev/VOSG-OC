@@ -3,24 +3,24 @@
 import { useState } from 'react';
 import Image from 'next/image';
 
-const ServiceCard = ({ icon, title, items, color, technicalNote, onClick }: { icon: string, title: string, items: string[], color: 'blue' | 'yellow', technicalNote?: string, onClick?: () => void }) => (
+const ServiceCard = ({ icon, title, items, color, technicalNote, onClick }: { icon: string, title: string, items: string[], color: 'green' | 'yellow', technicalNote?: string, onClick?: () => void }) => (
   <div 
     onClick={onClick}
     className="relative group p-8 md:p-12 rounded-[40px] bg-black/40 border border-white/5 hover:border-white/20 transition-all duration-500 backdrop-blur-xl overflow-hidden flex flex-col h-full cursor-default"
   >
-    <div className={`absolute -right-10 -top-10 w-40 h-40 blur-[80px] opacity-0 group-hover:opacity-20 transition-opacity duration-500 ${color === 'blue' ? 'bg-blue-600' : 'bg-yellow-500'}`}></div>
+    <div className={`absolute -right-10 -top-10 w-40 h-40 blur-[80px] opacity-0 group-hover:opacity-20 transition-opacity duration-500 ${color === 'green' ? 'bg-green-600' : 'bg-yellow-500'}`}></div>
     <div className="relative z-10">
       <div className="text-6xl mb-8 group-hover:scale-110 transition-transform duration-500">{icon}</div>
       <h3 className="text-3xl font-black mb-4 tracking-tighter text-white uppercase italic">{title}</h3>
       <ul className="space-y-4 mb-8">
         {items.map((item, idx) => (
           <li key={idx} className="text-zinc-300 flex items-start gap-3 leading-tight">
-            <span className={`mt-1.5 h-1.5 w-1.5 rounded-full shrink-0 ${color === 'blue' ? 'bg-blue-500' : 'bg-yellow-500'}`} />
+            <span className={`mt-1.5 h-1.5 w-1.5 rounded-full shrink-0 ${color === 'green' ? 'bg-green-500' : 'bg-yellow-500'}`} />
             <span className="font-medium">{item}</span>
           </li>
         ))}
       </ul>
-      <div className={`h-1.5 w-16 mb-6 ${color === 'blue' ? 'bg-blue-600' : 'bg-[#f1c40f]'} rounded-full`} />
+      <div className={`h-1.5 w-16 mb-6 ${color === 'green' ? 'bg-blue-600' : 'bg-[#f1c40f]'} rounded-full`} />
       {technicalNote && (
         <div className="mt-auto p-4 rounded-2xl bg-white/5 border border-white/10 italic text-[11px] text-zinc-400 leading-snug">
           {technicalNote}
@@ -66,7 +66,7 @@ export default function Home() {
             <a href="#services" className="hover:text-white transition-colors">Services</a>
             <a href="#histoire" className="hover:text-white transition-colors">Histoire</a>
             <a href="#zone" className="hover:text-white transition-colors">Secteur</a>
-            <a href="#contact" className="bg-blue-600 hover:bg-blue-500 text-white px-10 py-4 rounded-2xl transition-all shadow-lg shadow-blue-600/20 uppercase">Contact</a>
+            <a href="#contact" className="bg-green-600 hover:bg-green-500 text-white px-10 py-4 rounded-2xl transition-all shadow-lg shadow-green-600/20 uppercase">Contact</a>
           </div>
         </div>
       </nav>
@@ -88,7 +88,7 @@ export default function Home() {
             </p>
 
             <div className="flex flex-col sm:flex-row gap-6 justify-center items-center">
-              <a href="#contact" className="w-full sm:w-auto bg-blue-600 hover:bg-blue-500 text-white font-black py-6 px-12 rounded-2xl transition-all shadow-xl shadow-blue-600/20 uppercase tracking-widest text-xs">
+              <a href="#contact" className="w-full sm:w-auto bg-zinc-100 hover:bg-white text-black font-black py-6 px-12 rounded-2xl transition-all shadow-[0_0_30px_rgba(255,255,255,0.1)] hover:shadow-[0_0_40px_rgba(255,255,255,0.2)] uppercase tracking-widest text-xs">
                 Demander un devis
               </a>
               <a href="#services" className="w-full sm:w-auto border-2 border-[#f1c40f] text-[#f1c40f] hover:bg-[#f1c40f]/10 font-black py-6 px-12 rounded-2xl transition-all uppercase tracking-widest text-xs">
@@ -121,8 +121,8 @@ export default function Home() {
         <section id="services" className="py-32 px-10">
           <div className="max-w-[1400px] mx-auto">
             <div className="flex flex-col mb-20">
-              <h2 className="text-5xl md:text-7xl font-black uppercase italic tracking-tighter mb-4">Mes <span className="text-blue-500">Expertises</span></h2>
-              <div className="h-2 w-32 bg-blue-600 rounded-full"></div>
+              <h2 className="text-5xl md:text-7xl font-black uppercase italic tracking-tighter mb-4">Mes <span className="text-green-500">Expertises</span></h2>
+              <div className="h-2 w-32 bg-green-600 rounded-full"></div>
             </div>
             <div className="grid md:grid-cols-2 gap-12">
               <ServiceCard 
@@ -134,7 +134,7 @@ export default function Home() {
                   "Industriel : Installations et maintenance avec Schneider Electric",
                   "Dépannage Urgent : Intervention prioritaire panne totale ou partielle"
                 ]}
-                color="blue"
+                color="green"
               />
               <ServiceCard 
                 icon="❄️"
@@ -158,7 +158,7 @@ export default function Home() {
           <div className="max-w-[1400px] mx-auto flex flex-col gap-32">
             <div className="flex flex-col lg:flex-row items-center gap-12 lg:gap-24">
               <div className="lg:w-1/2 space-y-6">
-                <h2 className="text-5xl font-black uppercase italic text-blue-500 leading-none tracking-tighter">Des cimes <br/> Vosgiennes...</h2>
+                <h2 className="text-5xl font-black uppercase italic text-green-500 leading-none tracking-tighter">Des cimes <br/> Vosgiennes...</h2>
                 <p className="text-xl text-zinc-300 leading-relaxed font-medium">
                   C'est au cœur de cette nature puissante que tout a commencé. La rigueur du climat vosgien nous a appris que la fiabilité d'une installation électrique n'est pas une option, c'est une nécessité vitale.
                 </p>
@@ -224,21 +224,21 @@ export default function Home() {
         </section>
 
         {/* CONTACT */}
-        <section id="contact" className="py-32 px-10 bg-blue-600 relative z-10 text-white overflow-hidden">
-          <div className="absolute -right-20 -top-20 w-96 h-96 bg-white/10 blur-[100px] rounded-full"></div>
+        <section id="contact" className="py-32 px-10 bg-zinc-900 relative z-10 text-white overflow-hidden border-t border-white/5">
+          <div className="absolute -right-20 -top-20 w-96 h-96 bg-green-600/10 blur-[100px] rounded-full"></div>
           <div className="max-w-4xl mx-auto">
-            <h2 className="text-5xl md:text-7xl font-black mb-16 uppercase italic tracking-tighter text-center">Parlons de votre <span className="text-black">projet</span></h2>
+            <h2 className="text-5xl md:text-7xl font-black mb-16 uppercase italic tracking-tighter text-center">Parlons de votre <span className="text-green-500">projet</span></h2>
             <div className="grid md:grid-cols-3 gap-12">
               <div>
-                <p className="text-blue-200 text-[10px] font-black uppercase tracking-widest mb-2">Téléphone</p>
-                <a href="tel:0607505366" className="text-2xl font-black hover:text-black transition-colors italic">06 07 50 53 66</a>
+                <p className="text-zinc-500 text-[10px] font-black uppercase tracking-widest mb-2">Téléphone</p>
+                <a href="tel:0607505366" className="text-2xl font-black hover:text-[#f1c40f] transition-colors italic">06 07 50 53 66</a>
               </div>
               <div>
-                <p className="text-blue-200 text-[10px] font-black uppercase tracking-widest mb-2">E-mail</p>
-                <a href="mailto:vosgocelec@outlook.com" className="text-xl font-black hover:text-black transition-colors break-all italic">vosgocelec@outlook.com</a>
+                <p className="text-zinc-500 text-[10px] font-black uppercase tracking-widest mb-2">E-mail</p>
+                <a href="mailto:vosgocelec@outlook.com" className="text-xl font-black hover:text-[#f1c40f] transition-colors break-all italic">vosgocelec@outlook.com</a>
               </div>
               <div>
-                <p className="text-blue-200 text-[10px] font-black uppercase tracking-widest mb-2">Siège Social</p>
+                <p className="text-zinc-500 text-[10px] font-black uppercase tracking-widest mb-2">Siège Social</p>
                 <p className="text-xl font-black italic">Congénies (30111)</p>
               </div>
             </div>
