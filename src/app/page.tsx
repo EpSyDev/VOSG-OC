@@ -202,8 +202,14 @@ export default function Home() {
                   ))}
                 </div>
               </div>
-              <div className="bg-white/5 border border-white/10 rounded-[40px] aspect-square flex items-center justify-center italic text-zinc-600 uppercase font-black tracking-widest">
-                Carte Interactive à venir
+              <div className="relative group overflow-hidden rounded-[40px] border border-white/10 shadow-2xl">
+                <Image 
+                  src="/zone.png" 
+                  alt="Zone d'intervention VOSG'OC ELEC" 
+                  width={800} 
+                  height={600} 
+                  className="w-full h-auto object-cover group-hover:scale-105 transition-transform duration-700" 
+                />
               </div>
             </div>
           </div>
