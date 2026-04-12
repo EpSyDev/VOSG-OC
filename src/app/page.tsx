@@ -60,7 +60,7 @@ export default function Home() {
           <div className="flex items-center gap-6">
             <Image src="/text-logo.png" alt="VOSG'OC" width={280} height={80} className="h-10 md:h-12 w-auto object-contain" />
             <span className="hidden lg:block text-[11px] font-black uppercase tracking-[0.6em] text-[#f1c40f] border-l border-white/10 pl-6">
-              L'énergie d'ici
+              06 07 50 53 66
             </span>
           </div>
           <div className="hidden md:flex gap-12 items-center text-[10px] font-black uppercase tracking-[0.4em] text-zinc-100">
