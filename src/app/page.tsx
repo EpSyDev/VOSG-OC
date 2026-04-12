@@ -105,14 +105,14 @@ export default function Home() {
           <div className="max-w-[1400px] mx-auto px-10">
             <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
               {[
-                { label: 'Qualifelec', desc: 'Expertise Électrique' },
-                { label: 'ADC Fluides', desc: 'Garantie Clim' },
-                { label: 'RGE QualiPAC', desc: 'Économies d\'énergie' },
-                { label: 'NF C 15-100', desc: 'Installation aux normes' }
+                { title: 'Expertise Électrique', certif: 'Qualifelec' },
+                { title: 'Garantie Clim', certif: 'ADC Fluides' },
+                { title: 'Économies d\'énergie', certif: 'RGE QualiPAC' },
+                { title: 'Installation aux normes', certif: 'NF C 15-100' }
               ].map((q) => (
-                <div key={q.label} className="text-center group">
-                  <div className="text-[#f1c40f] font-black text-sm uppercase tracking-tighter mb-1 group-hover:scale-110 transition-transform">{q.label}</div>
-                  <div className="text-zinc-500 text-[9px] uppercase font-bold tracking-[0.2em]">{q.desc}</div>
+                <div key={q.title} className="text-center group">
+                  <div className="text-[#f1c40f] font-black text-lg md:text-xl uppercase italic tracking-tighter mb-1 group-hover:scale-105 transition-transform">{q.title}</div>
+                  <div className="text-zinc-400 text-[11px] md:text-xs uppercase font-bold tracking-[0.2em]">{q.certif}</div>
                 </div>
               ))}
             </div>
