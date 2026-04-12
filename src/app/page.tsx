@@ -152,7 +152,7 @@ export default function Home() {
         <section id="services" className="py-24 px-10">
           <div className="max-w-[1400px] mx-auto">
             <div className="flex flex-col mb-20">
-              <h2 className="text-5xl md:text-7xl font-black uppercase italic tracking-tighter mb-4">Mes <span className="text-green-500">Expertises</span></h2>
+              <h2 className="text-5xl md:text-7xl font-black uppercase italic tracking-tighter mb-4">Mes <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#f1c40f] to-[#fff3ad]">Expertises</span></h2>
               <div className="h-2 w-32 bg-green-600 rounded-full"></div>
             </div>
             <div className="grid md:grid-cols-2 gap-12">
