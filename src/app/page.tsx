@@ -138,7 +138,7 @@ export default function Home() {
               <div className="lg:w-1/2 space-y-4">
                 <h2 className="text-4xl md:text-5xl font-black uppercase italic text-[#f1c40f] leading-none tracking-tighter">...Au soleil de <br/> l'Occitanie</h2>
                 <p className="text-lg text-zinc-300 leading-relaxed font-medium">
-                  Nous marions cette exigence montagnarde à la réactivité locale pour offrir des solutions de climatisation adaptées au Gard et à l'Hérault. Un savoir-faire qui défie le temps.
+                  Nous marions cette exigence montagnarde à la convivialité locale pour offrir des solutions de climatisation adaptées au Gard et à l'Hérault. Un savoir-faire qui défie le temps.
                 </p>
               </div>
               <div className="lg:w-1/3 relative group overflow-hidden rounded-[30px] mr-auto">
@@ -159,10 +159,11 @@ export default function Home() {
                 icon="⚡"
                 title="Électricité Générale & Industrielle"
                 items={[
-                  "Rénovation : Remise aux normes et modernisation (Matériel Legrand)",
+                  "Solutions électriques fiables pour particuliers et professionnels",
+                  "Rénovation : Remise aux normes et modernisation (Matériel Legrand privilégié)",
                   "Neuf : Étude et réalisation selon la norme NF C 15-100",
                   "Industriel : Installations et maintenance avec Schneider Electric",
-                  "Dépannage Urgent : Intervention prioritaire panne totale ou partielle"
+                  "Dépannage Urgent : Intervention prioritaire pour toute panne totale ou partielle"
                 ]}
                 color="green"
               />
@@ -176,7 +177,7 @@ export default function Home() {
                   "Maintenance & Entretien : Nettoyage et optimisation",
                   "Dépannage : Intervention rapide toutes pannes"
                 ]}
-                technicalNote="Détenteur de l’Attestation de Capacité (ADC) pour la manipulation des fluides frigorigènes."
+                technicalNote="Détenteur de l’Attestation de Capacité (ADC) indispensable pour la manipulation des fluides frigorigènes et la garantie constructeur."
                 color="yellow"
               />
             </div>
@@ -192,7 +193,7 @@ export default function Home() {
                   Zone <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#f1c40f] to-[#fff3ad]">d'intervention</span>
                 </h2>
                 <p className="text-zinc-300 text-lg font-medium leading-relaxed">
-                  Basé à Congénies, j'interviens sous 24h/48h sur un large secteur couvrant le Gard, l'Hérault et le Vaucluse.
+                  Basé à Congénies, j'interviens rapidement sur un large secteur couvrant le Gard, l'Hérault et le Vaucluse.
                 </p>
               </div>
               <div className="relative group overflow-hidden rounded-[40px] border border-white/10 shadow-2xl">
