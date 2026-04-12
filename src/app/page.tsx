@@ -15,7 +15,7 @@ const ServiceCard = ({ icon, title, items, color, technicalNote, onClick }: { ic
       <ul className="space-y-4 mb-8">
         {items.map((item, idx) => (
           <li key={idx} className="text-zinc-300 flex items-start gap-3 leading-tight">
-            <span className={`mt-1.5 h-1.5 w-1.5 rounded-full shrink-0 ${color === 'blue' ? 'bg-blue-500' : color === 'green' ? 'bg-green-500' : 'bg-yellow-500'}`} />
+            <span className={`mt-1.5 h-1.5 w-1.5 rounded-full shrink-0 ${color === 'blue' ? 'bg-blue-500' : 'bg-yellow-500'}`} />
             <span className="font-medium">{item}</span>
           </li>
         ))}
