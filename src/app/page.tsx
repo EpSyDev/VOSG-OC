@@ -175,7 +175,7 @@ export default function Home() {
           <div className="max-w-[1400px] mx-auto flex flex-col gap-16 md:gap-20">
             <div className="flex flex-col lg:flex-row items-center gap-8 md:gap-12">
               <div className="lg:w-1/2 space-y-4">
-                <h2 className="text-3xl md:text-5xl font-black uppercase italic text-green-500 leading-none tracking-tighter">Des cimes <br/> Vosgiennes...</h2>
+                <h2 className="text-3xl md:text-5xl font-black uppercase italic text-transparent bg-clip-text bg-gradient-to-r from-green-600 to-green-400 leading-none tracking-tighter">Des cimes <br/> Vosgiennes...</h2>
                 <p className="text-base md:text-lg text-zinc-300 leading-relaxed font-medium">
                   C'est au cœur de cette nature puissante que tout a commencé. La rigueur du climat vosgien nous a appris que la fiabilité d'une installation électrique n'est pas une option, c'est une nécessité vitale.
                 </p>
@@ -187,7 +187,7 @@ export default function Home() {
 
             <div className="flex flex-col lg:flex-row-reverse items-center gap-12">
               <div className="lg:w-1/2 space-y-4">
-                <h2 className="text-4xl md:text-5xl font-black uppercase italic text-[#f1c40f] leading-none tracking-tighter">...Au soleil de <br/> l'Occitanie</h2>
+                <h2 className="text-4xl md:text-5xl font-black uppercase italic text-transparent bg-clip-text bg-gradient-to-r from-[#f1c40f] to-[#f39c12] leading-none tracking-tighter">...Au soleil de <br/> l'Occitanie</h2>
                 <p className="text-lg text-zinc-300 leading-relaxed font-medium">
                   Nous marions cette exigence montagnarde à la convivialité locale pour offrir des solutions de climatisation adaptées au Gard et à l'Hérault. Un savoir-faire qui défie le temps.
                 </p>
