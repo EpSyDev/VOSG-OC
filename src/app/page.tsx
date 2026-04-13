@@ -65,6 +65,7 @@ const BrandLogo = ({ name, src, className = "" }: { name: string, src: any, clas
 
 export default function Home() {
   const [isMapOpen, setIsMapOpen] = useState(false);
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   return (
     <main className="relative min-h-screen bg-black text-white font-sans selection:bg-yellow-500/30 overflow-x-hidden">
@@ -76,22 +77,50 @@ export default function Home() {
       </div>
 
       {/* NAVBAR */}
-      <nav className="fixed w-full z-[100] bg-black/40 backdrop-blur-2xl border-b border-white/5 px-6 md:px-10 py-4 md:py-6">
+      <nav className="fixed w-full z-[100] bg-black/40 backdrop-blur-2xl border-b border-white/5 px-4 md:px-10 py-3 md:py-6">
         <div className="max-w-[1800px] mx-auto flex justify-between items-center">
-          <div className="flex items-center gap-6">
-            <Image src="/text-logo.png" alt="VOSG'OC" width={280} height={80} className="h-8 md:h-12 w-auto object-contain" />
-            <a href="tel:0607505366" className="block text-xs md:text-[20px] font-black uppercase tracking-[0.2em] md:tracking-[0.4em] text-[#f1c40f] md:border-l md:border-white/10 md:pl-6 hover:text-white transition-colors">
+          <div className="flex items-center gap-3 md:gap-6">
+            <Image src="/text-logo.png" alt="VOSG'OC" width={280} height={80} className="h-6 md:h-12 w-auto object-contain" />
+            <a href="tel:0607505366" className="block text-[10px] md:text-[20px] font-black uppercase tracking-tight md:tracking-[0.4em] text-[#f1c40f] md:border-l md:border-white/10 md:pl-6 hover:text-white transition-colors whitespace-nowrap">
               06 07 50 53 66
             </a>
           </div>
-          <div className="hidden md:flex gap-12 items-center text-[10px] font-black uppercase tracking-[0.4em] text-zinc-100">
-            <a href="#histoire" className="hover:text-white transition-colors">Histoire</a>
-            <a href="#services" className="hover:text-white transition-colors">Services</a>
-            <a href="#zone" className="hover:text-white transition-colors">Secteur</a>
-            <a href="#projets" className="hover:text-white transition-colors">Réalisations</a>
-            <a href="#contact" className="bg-green-600 hover:bg-green-500 text-white px-10 py-4 rounded-2xl transition-all shadow-lg shadow-green-600/20 uppercase">Contact</a>
+          
+          <div className="flex items-center gap-2 md:gap-8">
+            <div className="hidden md:flex gap-12 items-center text-[10px] font-black uppercase tracking-[0.4em] text-zinc-100">
+              <a href="#histoire" className="hover:text-white transition-colors">Histoire</a>
+              <a href="#services" className="hover:text-white transition-colors">Services</a>
+              <a href="#zone" className="hover:text-white transition-colors">Secteur</a>
+              <a href="#projets" className="hover:text-white transition-colors">Réalisations</a>
+            </div>
+            
+            <a href="#contact" className="bg-green-600 hover:bg-green-500 text-white px-4 md:px-10 py-2 md:py-4 rounded-xl md:rounded-2xl text-[10px] md:text-xs font-black uppercase transition-all shadow-lg shadow-green-600/20">
+              Contact
+            </a>
+
+            {/* BURGER MENU MOBILE */}
+            <button 
+              onClick={() => setIsMenuOpen(!isMenuOpen)}
+              className="md:hidden p-1 text-[#f1c40f]"
+            >
+              {isMenuOpen ? (
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+              ) : (
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+              )}
+            </button>
           </div>
         </div>
+
+        {/* MOBILE MENU DROPDOWN */}
+        {isMenuOpen && (
+          <div className="md:hidden absolute top-full left-0 w-full bg-black/95 backdrop-blur-3xl border-b border-white/10 p-8 flex flex-col gap-8 text-center text-xs font-black uppercase tracking-[0.4em]">
+            <a href="#histoire" onClick={() => setIsMenuOpen(false)} className="hover:text-[#f1c40f] transition-colors">Histoire</a>
+            <a href="#services" onClick={() => setIsMenuOpen(false)} className="hover:text-[#f1c40f] transition-colors">Services</a>
+            <a href="#zone" onClick={() => setIsMenuOpen(false)} className="hover:text-[#f1c40f] transition-colors">Secteur</a>
+            <a href="#projets" onClick={() => setIsMenuOpen(false)} className="hover:text-[#f1c40f] transition-colors">Réalisations</a>
+          </div>
+        )}
       </nav>
 
       <div className="relative z-10">
