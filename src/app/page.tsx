@@ -80,7 +80,7 @@ export default function Home() {
         <div className="max-w-[1800px] mx-auto flex justify-between items-center">
           <div className="flex items-center gap-6">
             <Image src="/text-logo.png" alt="VOSG'OC" width={280} height={80} className="h-8 md:h-12 w-auto object-contain" />
-            <a href="tel:0607505366" className="hidden lg:block text-[20px] font-black uppercase tracking-[0.4em] text-[#f1c40f] border-l border-white/10 pl-6 hover:text-white transition-colors">
+            <a href="tel:0607505366" className="block text-xs md:text-[20px] font-black uppercase tracking-[0.2em] md:tracking-[0.4em] text-[#f1c40f] md:border-l md:border-white/10 md:pl-6 hover:text-white transition-colors">
               06 07 50 53 66
             </a>
           </div>
