@@ -27,7 +27,6 @@ const ServiceCard = ({ icon, title, items, color, technicalNote, onClick }: { ic
           </li>
         ))}
       </ul>
-      <div className={`h-1 w-12 md:h-1.5 md:w-16 mb-6 ${color === 'green' ? 'bg-[#f1c40f]' : 'bg-blue-600'} rounded-full`} />
       {technicalNote && (
         <div className="mt-auto p-4 rounded-2xl bg-white/5 border border-white/10 italic text-[11px] text-zinc-400 leading-snug">
           {technicalNote}
