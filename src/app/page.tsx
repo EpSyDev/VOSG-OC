@@ -44,6 +44,15 @@ const GalleryItem = ({ category }: { category: string }) => (
   </div>
 );
 
+const BrandLogo = ({ name, path }: { name: string, path: string }) => (
+  <div className="flex items-center justify-center p-4 grayscale opacity-50 hover:grayscale-0 hover:opacity-100 transition-all duration-500">
+    <div className="relative w-32 h-16 md:w-40 md:h-20">
+      {/* Note: Remplacer par les vrais fichiers logos dans /public */}
+      <div className="absolute inset-0 border border-white/10 rounded-xl flex items-center justify-center text-[10px] font-bold text-zinc-500 uppercase tracking-widest">{name}</div>
+    </div>
+  </div>
+);
+
 export default function Home() {
   const [isMapOpen, setIsMapOpen] = useState(false);
 
@@ -83,11 +92,11 @@ export default function Home() {
               <Image src="/blason.png" alt="Blason" width={300} height={300} className="h-32 md:h-60 w-auto object-contain mix-blend-lighten" />
             </div>
 
-            <h1 className="text-4xl md:text-6xl lg:text-[100px] font-[950] leading-[1.1] mb-8 md:mb-12 tracking-[-0.02em] md:tracking-[-0.05em] uppercase italic">
+            <h1 className="text-4xl md:text-7xl lg:text-[100px] font-[950] leading-[1.1] mb-8 md:mb-12 tracking-tight md:tracking-[-0.05em] uppercase italic">
               La force des origines, <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#f1c40f] to-[#fff3ad]">l'énergie d'ici.</span>
             </h1>
 
-            <p className="text-zinc-200 text-xl md:text-2xl max-w-3xl mx-auto mb-16 leading-relaxed font-semibold px-4 drop-shadow-md">
+            <p className="text-zinc-200 text-lg md:text-2xl max-w-3xl mx-auto mb-16 leading-relaxed font-semibold px-4 drop-shadow-md">
               L'expertise vosgienne rencontre la convivialité occitane pour vos projets d'électricité et climatisation.
             </p>
 
@@ -114,7 +123,7 @@ export default function Home() {
               ].map((q) => (
                 <div key={q.title} className="text-center group">
                   <div className="text-[#f1c40f] font-black text-base md:text-xl uppercase italic tracking-tighter mb-1 group-hover:scale-105 transition-transform">{q.title}</div>
-                  <div className="text-zinc-400 text-[11px] md:text-xs uppercase font-bold tracking-[0.2em]">{q.certif}</div>
+                  <div className="text-zinc-500 text-[9px] md:text-xs uppercase font-bold tracking-[0.2em]">{q.certif}</div>
                 </div>
               ))}
             </div>
@@ -182,6 +191,21 @@ export default function Home() {
                 technicalNote="Détenteur de l’Attestation de Capacité (ADC) indispensable pour la manipulation des fluides frigorigènes et la garantie constructeur."
                 color="yellow"
               />
+            </div>
+          </div>
+        </section>
+
+        {/* MARQUES PARTENAIRES */}
+        <section className="py-12 border-y border-white/5 bg-black/20">
+          <div className="max-w-[1400px] mx-auto px-6">
+            <p className="text-center text-[10px] font-black uppercase tracking-[0.5em] text-zinc-500 mb-10">Partenaires & Matériel privilégié</p>
+            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-8">
+              <BrandLogo name="Legrand" path="/logos/legrand.png" />
+              <BrandLogo name="Schneider" path="/logos/schneider.png" />
+              <BrandLogo name="Mitsubishi" path="/logos/mitsubishi.png" />
+              <BrandLogo name="Daikin" path="/logos/daikin.png" />
+              <BrandLogo name="Toshiba" path="/logos/toshiba.png" />
+              <BrandLogo name="Hager" path="/logos/hager.png" />
             </div>
           </div>
         </section>
