@@ -3,6 +3,12 @@
 import { useState } from 'react';
 import Image from 'next/image';
 import zoneImg from './zone.png';
+import legrandLogo from './legrand.png';
+import schneiderLogo from './schneider.png';
+import toshibaLogo from './toshiba.webp';
+import daikinLogo from './daikin.webp';
+import mitsubishiLogo from './mitsubishi.png';
+import lgLogo from './lg.png';
 
 const ServiceCard = ({ icon, title, items, color, technicalNote, onClick }: { icon: string, title: string, items: string[], color: 'green' | 'yellow', technicalNote?: string, onClick?: () => void }) => (
   <div 
@@ -44,11 +50,15 @@ const GalleryItem = ({ category }: { category: string }) => (
   </div>
 );
 
-const BrandLogo = ({ name, path }: { name: string, path: string }) => (
+const BrandLogo = ({ name, src }: { name: string, src: any }) => (
   <div className="flex items-center justify-center p-4 grayscale opacity-50 hover:grayscale-0 hover:opacity-100 transition-all duration-500">
-    <div className="relative w-32 h-16 md:w-40 md:h-20">
-      {/* Note: Remplacer par les vrais fichiers logos dans /public */}
-      <div className="absolute inset-0 border border-white/10 rounded-xl flex items-center justify-center text-[10px] font-bold text-zinc-500 uppercase tracking-widest">{name}</div>
+    <div className="relative w-full h-12 md:h-16">
+      <Image 
+        src={src} 
+        alt={name} 
+        fill 
+        className="object-contain" 
+      />
     </div>
   </div>
 );
@@ -200,12 +210,12 @@ export default function Home() {
           <div className="max-w-[1400px] mx-auto px-6">
             <p className="text-center text-[10px] font-black uppercase tracking-[0.5em] text-zinc-500 mb-10">Partenaires & Matériel privilégié</p>
             <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-8">
-              <BrandLogo name="Legrand" path="/logos/legrand.png" />
-              <BrandLogo name="Schneider" path="/logos/schneider.png" />
-              <BrandLogo name="Mitsubishi" path="/logos/mitsubishi.png" />
-              <BrandLogo name="Daikin" path="/logos/daikin.png" />
-              <BrandLogo name="Toshiba" path="/logos/toshiba.png" />
-              <BrandLogo name="Hager" path="/logos/hager.png" />
+              <BrandLogo name="Legrand" src={legrandLogo} />
+              <BrandLogo name="Schneider" src={schneiderLogo} />
+              <BrandLogo name="Mitsubishi" src={mitsubishiLogo} />
+              <BrandLogo name="Daikin" src={daikinLogo} />
+              <BrandLogo name="Toshiba" src={toshibaLogo} />
+              <BrandLogo name="LG" src={lgLogo} />
             </div>
           </div>
         </section>
