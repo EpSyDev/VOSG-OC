@@ -51,8 +51,8 @@ const GalleryItem = ({ category }: { category: string }) => (
 );
 
 const BrandLogo = ({ name, src, className = "" }: { name: string, src: any, className?: string }) => (
-  <div className="flex items-center justify-center p-4 md:grayscale md:opacity-50 md:hover:grayscale-0 md:hover:opacity-100 transition-all duration-500">
-    <div className={`relative w-full h-16 md:h-20 ${className}`}>
+  <div className="flex items-center justify-center p-4 transition-all duration-500 hover:scale-110">
+    <div className={`relative w-full h-20 md:h-24 ${className}`}>
       <Image 
         src={src} 
         alt={name} 
@@ -211,10 +211,10 @@ export default function Home() {
             <p className="text-center text-[10px] font-black uppercase tracking-[0.5em] text-zinc-500 mb-10">Partenaires & Matériel privilégié</p>
             <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-8">
               <BrandLogo name="Legrand" src={legrandLogo} />
-              <BrandLogo name="Schneider" src={schneiderLogo} className="scale-125" />
+              <BrandLogo name="Schneider" src={schneiderLogo} className="scale-150" />
               <BrandLogo name="Mitsubishi" src={mitsubishiLogo} />
               <BrandLogo name="Daikin" src={daikinLogo} />
-              <BrandLogo name="Toshiba" src={toshibaLogo} className="scale-110" />
+              <BrandLogo name="Toshiba" src={toshibaLogo} className="scale-125" />
               <BrandLogo name="LG" src={lgLogo} />
             </div>
           </div>
