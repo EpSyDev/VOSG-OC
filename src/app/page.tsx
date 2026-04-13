@@ -81,7 +81,7 @@ export default function Home() {
         <div className="max-w-[1800px] mx-auto flex justify-between items-center">
           <div className="flex items-center gap-3 md:gap-6">
             <Image src="/text-logo.png" alt="VOSG'OC" width={280} height={80} className="h-6 md:h-12 w-auto object-contain" />
-            <a href="tel:0607505366" className="block text-[10px] md:text-[20px] font-black uppercase tracking-tight md:tracking-[0.4em] text-[#f1c40f] md:border-l md:border-white/10 md:pl-6 hover:text-white transition-colors whitespace-nowrap">
+            <a href="tel:0607505366" className="block text-sm md:text-[20px] font-black uppercase tracking-tight md:tracking-[0.4em] text-[#f1c40f] md:border-l md:border-white/10 md:pl-6 hover:text-white transition-colors whitespace-nowrap">
               06 07 50 53 66
             </a>
           </div>
@@ -94,7 +94,7 @@ export default function Home() {
               <a href="#projets" className="hover:text-white transition-colors">Réalisations</a>
             </div>
             
-            <a href="#contact" className="bg-green-600 hover:bg-green-500 text-white px-4 md:px-10 py-2 md:py-4 rounded-xl md:rounded-2xl text-[10px] md:text-xs font-black uppercase transition-all shadow-lg shadow-green-600/20">
+            <a href="#contact" className="hidden md:block bg-green-600 hover:bg-green-500 text-white px-4 md:px-10 py-2 md:py-4 rounded-xl md:rounded-2xl text-[10px] md:text-xs font-black uppercase transition-all shadow-lg shadow-green-600/20">
               Contact
             </a>
 
@@ -119,6 +119,7 @@ export default function Home() {
             <a href="#services" onClick={() => setIsMenuOpen(false)} className="hover:text-[#f1c40f] transition-colors">Services</a>
             <a href="#zone" onClick={() => setIsMenuOpen(false)} className="hover:text-[#f1c40f] transition-colors">Secteur</a>
             <a href="#projets" onClick={() => setIsMenuOpen(false)} className="hover:text-[#f1c40f] transition-colors">Réalisations</a>
+            <a href="#contact" onClick={() => setIsMenuOpen(false)} className="hover:text-green-500 transition-colors">Contact</a>
           </div>
         )}
       </nav>
