@@ -66,8 +66,35 @@ export default function Home() {
   const [isMapOpen, setIsMapOpen] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": ["Electrician", "HVACBusiness"],
+    "name": "VOSG'OC ELEC",
+    "description": "Électricien professionnel et expert en climatisation basé à Congénies. Installation et dépannage dans le Gard et l'Hérault.",
+    "image": "https://vosgoc-elec.fr/blason.png", // À adapter avec votre vrai domaine
+    "telephone": "0607505366",
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Congénies",
+      "postalCode": "30111",
+      "addressRegion": "Gard",
+      "addressCountry": "FR"
+    },
+    "geo": {
+      "@type": "GeoCoordinates",
+      "latitude": 43.7772,
+      "longitude": 4.1601
+    },
+    "areaServed": ["Gard", "Hérault", "Vaucluse"],
+    "priceRange": "$$"
+  };
+
   return (
     <main className="relative min-h-screen bg-black text-white font-sans selection:bg-yellow-500/30 overflow-x-hidden">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
       
       {/* BACKGROUND FIXE */}
       <div className="fixed inset-0 z-0 pointer-events-none">
