@@ -62,6 +62,24 @@ const BrandLogo = ({ name, src, className = "" }: { name: string, src: any, clas
   </div>
 );
 
+const ReviewCard = ({ author, rating, text, date }: { author: string, rating: number, text: string, date: string }) => (
+  <div className="bg-white/5 border border-white/10 p-8 rounded-[32px] flex flex-col h-full backdrop-blur-sm group hover:border-[#f1c40f]/30 transition-all duration-500 shadow-2xl">
+    <div className="flex gap-1 mb-4 text-[#f1c40f] text-lg">
+      {[...Array(5)].map((_, i) => (
+        <span key={i} className={i < rating ? "opacity-100" : "opacity-20"}>★</span>
+      ))}
+    </div>
+    <p className="text-zinc-300 italic mb-8 leading-relaxed text-sm md:text-base flex-grow">"{text}"</p>
+    <div className="flex items-center gap-4 pt-4 border-t border-white/5">
+      <div className="w-10 h-10 rounded-full bg-gradient-to-br from-zinc-700 to-zinc-900 flex items-center justify-center font-black text-[#f1c40f] text-sm shadow-inner">{author.charAt(0)}</div>
+      <div>
+        <h4 className="font-black uppercase tracking-widest text-[10px] text-white">{author}</h4>
+        <p className="text-[9px] text-zinc-500 font-bold uppercase tracking-tighter">{date}</p>
+      </div>
+    </div>
+  </div>
+);
+
 export default function Home() {
   const [isMapOpen, setIsMapOpen] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -289,7 +307,6 @@ export default function Home() {
           </div>
         </section>
 
-        {/* ZONE D'INTERVENTION */}
         <section id="zone" className="py-16 md:py-24 px-6 md:px-10 relative overflow-hidden z-10">
           <div className="max-w-[1400px] mx-auto relative z-10">
             <div className="grid lg:grid-cols-2 gap-16 items-center">
@@ -423,6 +440,32 @@ export default function Home() {
                   </div>
                 </form>
               )}
+            </div>
+          </div>
+        </section>
+
+        {/* SECTION AVIS GOOGLE */}
+        <section className="py-16 md:py-24 px-6 md:px-10 bg-zinc-900/50">
+          <div className="max-w-[1400px] mx-auto">
+            <div className="text-center mb-16">
+              <h2 className="text-4xl md:text-7xl font-black uppercase italic mb-4 tracking-tighter">
+                ILS NOUS FONT <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#f1c40f] to-[#fff3ad]">CONFIANCE</span>
+              </h2>
+              <p className="text-zinc-500 text-[10px] font-black uppercase tracking-[0.4em]">Avis authentiques Google Maps</p>
+            </div>
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 max-w-5xl mx-auto">
+              <ReviewCard 
+                author="Mickael sanchez"
+                rating={5}
+                text="Un artisan professionnel et réactif, il est venu pour me remplacer mon vieux tableau électrique de 1975.. avec le tout mise aux normes d'aujourd'hui, un travail très qualitatif."
+                date="Avril 2026"
+              />
+              <ReviewCard 
+                author="Jordan Chm"
+                rating={5}
+                text="Je recommande vivement cette jeune entreprise d’électricité ! Le gérant est un entrepreneur sérieux, ponctuel et très professionnel. Il est intervenu chez moi pour l’installation d’une borne de recharge électrique, et tout s’est parfaitement déroulé du début à la fin. Le travail est soigné, les explications sont claires, et on sent qu’il est passionné par ce qu’il fait. Installation propre, délais respectés et tarif honnête."
+                date="Février 2026"
+              />
             </div>
           </div>
         </section>
