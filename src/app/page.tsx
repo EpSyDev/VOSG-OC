@@ -477,24 +477,25 @@ export default function Home() {
       </div>
 
       {/* LIGHTBOX POUR LA CARTE */}
-      {isMapOpen && (
-        <div 
-          className="fixed inset-0 z-[200] bg-black/95 backdrop-blur-2xl flex items-center justify-center p-4 md:p-10 cursor-zoom-out"
-          onClick={() => setIsMapOpen(false)}
-        >
-          <div className="relative w-full max-w-6xl aspect-[4/3] md:aspect-video">
+      <div 
+        className={`fixed inset-0 z-[200] bg-black/80 backdrop-blur-2xl flex items-center justify-center p-4 md:p-12 transition-all duration-500 cursor-zoom-out ${isMapOpen ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'}`}
+        onClick={() => setIsMapOpen(false)}
+      >
+        <div className={`relative w-full max-w-7xl h-full flex items-center justify-center transition-all duration-500 ease-out ${isMapOpen ? 'scale-100 translate-y-0' : 'scale-95 translate-y-8'}`}>
+          <div className="relative w-full h-full max-h-[85vh]">
             <Image 
               src={zoneImg} 
               alt="Zone d'intervention" 
               fill
               className="object-contain"
+              priority
             />
-            <button className="absolute top-0 right-0 md:-top-10 md:-right-10 text-white hover:text-[#f1c40f] transition-colors">
-              <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
-            </button>
           </div>
+          <button className="absolute top-0 right-0 md:-top-10 md:-right-10 text-white/70 hover:text-[#f1c40f] transition-colors p-2">
+            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+          </button>
         </div>
-      )}
+      </div>
     </main>
   );
 }
