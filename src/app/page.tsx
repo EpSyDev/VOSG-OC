@@ -65,6 +65,19 @@ const BrandLogo = ({ name, src, className = "" }: { name: string, src: any, clas
 export default function Home() {
   const [isMapOpen, setIsMapOpen] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [formState, setFormState] = useState({ name: '', email: '', service: 'electricite', message: '' });
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitted, setSubmitted] = useState(false);
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setIsSubmitting(true);
+    // Simulation d'un envoi (on pourrait brancher une API route ici)
+    await new Promise(resolve => setTimeout(resolve, 1500));
+    console.log('Données envoyées :', formState);
+    setIsSubmitting(false);
+    setSubmitted(true);
+  };
 
   const jsonLd = {
     "@context": "https://schema.org",
@@ -320,7 +333,7 @@ export default function Home() {
         {/* CONTACT */}
         <section id="contact" className="py-20 md:py-32 px-6 md:px-10 bg-zinc-900 relative z-10 text-white overflow-hidden border-t border-white/5">
           <div className="absolute -right-20 -top-20 w-96 h-96 bg-green-600/10 blur-[100px] rounded-full"></div>
-          <div className="max-w-4xl mx-auto">
+          <div className="max-w-5xl mx-auto">
             <h2 className="text-4xl md:text-7xl font-black mb-12 md:mb-16 uppercase italic tracking-tighter text-center">Parlons de votre <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#f1c40f] to-[#fff3ad]">projet</span></h2>
             <div className="grid md:grid-cols-3 gap-12">
               <div>
@@ -335,6 +348,81 @@ export default function Home() {
                 <p className="text-zinc-500 text-[10px] font-black uppercase tracking-widest mb-2">Siège Social</p>
                 <p className="text-xl font-black italic">Congénies (30111)</p>
               </div>
+            </div>
+
+            {/* FORMULAIRE DE CONTACT */}
+            <div className="mt-20 max-w-3xl mx-auto">
+              {submitted ? (
+                <div className="bg-green-600/20 border border-green-500/30 p-10 rounded-[32px] text-center backdrop-blur-md animate-in fade-in zoom-in duration-500">
+                  <div className="text-4xl mb-4">✅</div>
+                  <h3 className="text-2xl font-black uppercase italic mb-2">Message envoyé !</h3>
+                  <p className="text-zinc-300">Merci {formState.name}, je vous recontacte dans les plus brefs délais.</p>
+                  <button onClick={() => setSubmitted(false)} className="mt-6 text-[10px] font-black uppercase tracking-widest text-[#f1c40f] hover:underline cursor-pointer">Envoyer un autre message</button>
+                </div>
+              ) : (
+                <form onSubmit={handleSubmit} className="grid grid-cols-1 md:grid-cols-2 gap-6 bg-white/5 p-8 md:p-12 rounded-[40px] border border-white/10 backdrop-blur-sm shadow-2xl">
+                  <div className="space-y-2">
+                    <label className="text-[10px] font-black uppercase tracking-widest text-zinc-500 ml-2">Nom complet</label>
+                    <input 
+                      type="text" 
+                      required
+                      placeholder="Ex: Jean Dupont"
+                      value={formState.name}
+                      onChange={(e) => setFormState({...formState, name: e.target.value})}
+                      className="w-full bg-black/40 border border-white/10 rounded-2xl px-6 py-4 outline-none focus:border-[#f1c40f]/50 transition-all" 
+                    />
+                  </div>
+                  <div className="space-y-2">
+                    <label className="text-[10px] font-black uppercase tracking-widest text-zinc-500 ml-2">E-mail</label>
+                    <input 
+                      type="email" 
+                      required
+                      placeholder="Ex: jean@exemple.com"
+                      value={formState.email}
+                      onChange={(e) => setFormState({...formState, email: e.target.value})}
+                      className="w-full bg-black/40 border border-white/10 rounded-2xl px-6 py-4 outline-none focus:border-[#f1c40f]/50 transition-all" 
+                    />
+                  </div>
+                  <div className="md:col-span-2 space-y-2">
+                    <label className="text-[10px] font-black uppercase tracking-widest text-zinc-500 ml-2">Besoin principal</label>
+                    <select 
+                      value={formState.service}
+                      onChange={(e) => setFormState({...formState, service: e.target.value})}
+                      className="w-full bg-black/40 border border-white/10 rounded-2xl px-6 py-4 outline-none focus:border-[#f1c40f]/50 transition-all appearance-none cursor-pointer text-zinc-300"
+                    >
+                      <option value="electricite" className="bg-zinc-900">Électricité Générale / Rénovation</option>
+                      <option value="climatisation" className="bg-zinc-900">Climatisation / Chauffage</option>
+                      <option value="depannage" className="bg-zinc-900">Dépannage Urgent</option>
+                      <option value="devis" className="bg-zinc-900">Demande de Devis Gratuit</option>
+                    </select>
+                  </div>
+                  <div className="md:col-span-2 space-y-2">
+                    <label className="text-[10px] font-black uppercase tracking-widest text-zinc-500 ml-2">Message</label>
+                    <textarea 
+                      required
+                      rows={4}
+                      placeholder="Décrivez votre projet..."
+                      value={formState.message}
+                      onChange={(e) => setFormState({...formState, message: e.target.value})}
+                      className="w-full bg-black/40 border border-white/10 rounded-2xl px-6 py-4 outline-none focus:border-[#f1c40f]/50 transition-all resize-none"
+                    ></textarea>
+                  </div>
+                  <div className="md:col-span-2 mt-4">
+                    <button 
+                      type="submit" 
+                      disabled={isSubmitting}
+                      className="w-full bg-green-600 hover:bg-green-500 disabled:bg-zinc-700 text-white font-black py-5 rounded-2xl transition-all shadow-lg shadow-green-600/20 uppercase tracking-widest text-xs flex items-center justify-center gap-3 cursor-pointer"
+                    >
+                      {isSubmitting ? (
+                        <>
+                          <div className="w-4 h-4 border-2 border-white/30 border-t-white rounded-full animate-spin"></div>
+                          Envoi en cours...
+                        </>
+                      ) : "Envoyer ma demande"}
+                    </button>
+                  </div>
+                </form>
+              )}
             </div>
           </div>
         </section>
