@@ -336,9 +336,9 @@ export default function Home() {
         <section id="projets" className="py-16 md:py-24 px-6 md:px-10">
           <div className="max-w-[1400px] mx-auto">
             <h2 className="text-4xl md:text-7xl font-black uppercase italic mb-12 md:mb-16">Nos <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#f1c40f] to-[#fff3ad]">DERNIÈRES RÉALISATIONS</span></h2>
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-              <GalleryItem category="Électricité" />
-              <GalleryItem category="Climatisation" />
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 max-w-5xl mx-auto gap-6">
+              <GalleryItem category="Projet Électricité (en cours)" />
+              <GalleryItem category="Climatisation (en cours)" />
             </div>
           </div>
         </section>
