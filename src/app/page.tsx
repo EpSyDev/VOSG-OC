@@ -86,15 +86,25 @@ export default function Home() {
   const [formState, setFormState] = useState({ name: '', email: '', service: 'electricite', message: '' });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitted, setSubmitted] = useState(false);
+  const [submitError, setSubmitError] = useState('');
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
-    // Simulation d'un envoi (on pourrait brancher une API route ici)
-    await new Promise(resolve => setTimeout(resolve, 1500));
-    console.log('Données envoyées :', formState);
-    setIsSubmitting(false);
-    setSubmitted(true);
+    setSubmitError('');
+    try {
+      const res = await fetch('/api/send', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(formState),
+      });
+      if (!res.ok) throw new Error('Erreur lors de l\'envoi');
+      setSubmitted(true);
+    } catch {
+      setSubmitError('Une erreur est survenue. Merci de réessayer ou de nous contacter par téléphone.');
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const jsonLd = {
@@ -421,8 +431,11 @@ export default function Home() {
                     ></textarea>
                   </div>
                   <div className="md:col-span-2 mt-4">
-                    <button 
-                      type="submit" 
+                    {submitError && (
+                      <p className="text-red-400 text-xs font-bold mb-4 text-center">{submitError}</p>
+                    )}
+                    <button
+                      type="submit"
                       disabled={isSubmitting}
                       className="w-full bg-green-600 hover:bg-green-500 disabled:bg-zinc-700 text-white font-black py-5 rounded-2xl transition-all shadow-lg shadow-green-600/20 uppercase tracking-widest text-xs flex items-center justify-center gap-3 cursor-pointer"
                     >
