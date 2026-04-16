@@ -141,8 +141,6 @@ export default function Home() {
       <div className="fixed inset-0 z-0 pointer-events-none">
         <Image src="/hero-bg.png" alt="Background" fill className="object-cover opacity-60" priority />
         <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-transparent to-black"></div>
-        <div className="absolute top-1/3 left-1/4 w-[500px] h-[500px] bg-blue-700/10 blur-[120px] rounded-full"></div>
-        <div className="absolute bottom-1/4 right-1/3 w-[400px] h-[400px] bg-blue-500/8 blur-[150px] rounded-full"></div>
       </div>
 
       {/* NAVBAR */}
@@ -163,7 +161,7 @@ export default function Home() {
               <a href="#projets" className="hover:text-white transition-colors">Réalisations</a>
             </div>
             
-            <a href="#contact" className="hidden md:block bg-gradient-to-r from-blue-600 to-blue-500 hover:from-blue-500 hover:to-cyan-500 text-white px-4 md:px-10 py-2 md:py-4 rounded-xl md:rounded-2xl text-[10px] md:text-xs font-black uppercase transition-all shadow-lg shadow-blue-600/20">
+            <a href="#contact" className="hidden md:block bg-green-600 hover:bg-green-500 text-white px-4 md:px-10 py-2 md:py-4 rounded-xl md:rounded-2xl text-[10px] md:text-xs font-black uppercase transition-all shadow-lg shadow-green-600/20">
               Contact
             </a>
 
@@ -202,7 +200,7 @@ export default function Home() {
             </div>
 
             <h1 className="text-4xl md:text-7xl lg:text-[100px] font-[950] leading-[1.1] mb-8 md:mb-12 tracking-tight md:tracking-[-0.05em] uppercase italic">
-              La force des origines, <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#f1c40f] via-amber-300 to-blue-300">l'énergie d'ici.</span>
+              La force des origines, <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#f1c40f] to-[#fff3ad]">l'énergie d'ici.</span>
             </h1>
 
             <p className="text-zinc-200 text-lg md:text-2xl max-w-3xl mx-auto mb-16 leading-relaxed font-semibold px-4 drop-shadow-md">
@@ -320,14 +318,11 @@ export default function Home() {
         </section>
 
         <section id="zone" className="py-16 md:py-24 px-6 md:px-10 relative overflow-hidden z-10">
-          <div className="absolute inset-0 pointer-events-none">
-            <div className="absolute left-0 top-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-blue-600/10 blur-[120px] rounded-full"></div>
-          </div>
           <div className="max-w-[1400px] mx-auto relative z-10">
             <div className="grid lg:grid-cols-2 gap-16 items-center">
               <div>
                 <h2 className="text-4xl md:text-7xl font-black mb-6 md:mb-8 uppercase italic tracking-tighter">
-                  Zone <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-blue-200">D'INTERVENTION</span>
+                  Zone <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#f1c40f] to-[#fff3ad]">D'INTERVENTION</span>
                 </h2>
                 <p className="text-zinc-300 text-base md:text-lg font-medium leading-relaxed mb-8 lg:mb-0">
                   Basé à Congénies, j'interviens rapidement sur un large secteur couvrant le Gard, l'Hérault et le Vaucluse.
@@ -350,7 +345,7 @@ export default function Home() {
         {/* RÉALISATIONS - PLACÉES AVANT LE CONTACT */}
         <section id="projets" className="py-16 md:py-24 px-6 md:px-10">
           <div className="max-w-[1400px] mx-auto">
-            <h2 className="text-4xl md:text-7xl font-black uppercase italic mb-12 md:mb-16">Nos <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-cyan-300 to-[#f1c40f]">DERNIÈRES RÉALISATIONS</span></h2>
+            <h2 className="text-4xl md:text-7xl font-black uppercase italic mb-12 md:mb-16">Nos <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#f1c40f] to-[#fff3ad]">DERNIÈRES RÉALISATIONS</span></h2>
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 max-w-5xl mx-auto gap-6">
               <GalleryItem category="Projet Électricité (en cours)" />
               <GalleryItem category="Climatisation (en cours)" />
@@ -361,7 +356,6 @@ export default function Home() {
         {/* CONTACT */}
         <section id="contact" className="py-20 md:py-32 px-6 md:px-10 bg-zinc-900 relative z-10 text-white overflow-hidden border-t border-white/5">
           <div className="absolute -right-20 -top-20 w-96 h-96 bg-green-600/10 blur-[100px] rounded-full"></div>
-          <div className="absolute -left-20 bottom-0 w-96 h-96 bg-blue-600/10 blur-[120px] rounded-full"></div>
           <div className="max-w-5xl mx-auto">
             <h2 className="text-4xl md:text-7xl font-black mb-12 md:mb-16 uppercase italic tracking-tighter text-center">Parlons de votre <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#f1c40f] to-[#fff3ad]">projet</span></h2>
             <div className="grid md:grid-cols-3 gap-12">
